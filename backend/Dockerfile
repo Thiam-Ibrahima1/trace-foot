@@ -9,11 +9,10 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
+RUN rm -f bootstrap/cache/*.php
 RUN composer install --no-dev --optimize-autoloader --no-scripts
-
-RUN php artisan config:clear || true
-RUN php artisan cache:clear || true
+RUN php artisan package:discover --ansi
 
 EXPOSE 8000
 
-CMD php artisan config:clear && php artisan cache:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
