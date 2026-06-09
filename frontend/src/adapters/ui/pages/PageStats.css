@@ -1,0 +1,187 @@
+/* PageStats.css — Statistiques admin avec graphiques SVG */
+
+.page-stats {
+  padding: 0 24px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Chargement (conservé) ────────────────────────────────────── */
+.st-charg {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 16px;
+  height: 300px; color: #64748b; font-size: .9rem;
+}
+.st-charg-spinner {
+  width: 32px; height: 32px; border: 3px solid #e2e8f0;
+  border-top-color: #1d4ed8; border-radius: 50%;
+  animation: st-spin .7s linear infinite;
+}
+@keyframes st-spin { to { transform: rotate(360deg); } }
+
+/* ── Skeleton Stats ───────────────────────────────────────────── */
+@keyframes st-skel-pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
+.st-skel-top       { height: 56px; border-radius: 12px; background: #e2e8f0; margin-bottom: 20px; margin-top: 4px; animation: st-skel-pulse 1.4s ease-in-out infinite; }
+.st-skel-kpis      { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 14px; margin-bottom: 24px; }
+.st-skel-kpi       { height: 88px; border-radius: 14px; background: #e9eef4; animation: st-skel-pulse 1.4s ease-in-out infinite .1s; }
+.st-skel-graph     { height: 200px; border-radius: 16px; background: #e9eef4; margin-bottom: 20px; animation: st-skel-pulse 1.4s ease-in-out infinite .2s; }
+.st-skel-graph--sm { height: 140px; animation-delay: .3s; }
+
+/* ── En-tête ──────────────────────────────────────────────────── */
+.st-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 24px; padding-top: 4px;
+}
+.st-titre { font-size: 1.3rem; font-weight: 900; color: #0f172a; margin: 0; }
+.st-sous  { font-size: .78rem; color: #94a3b8; margin: 2px 0 0; }
+
+.st-periode {
+  display: flex; gap: 4px;
+  background: #f1f5f9; border-radius: 10px; padding: 3px;
+}
+.st-per-btn {
+  padding: 6px 14px; border: none; border-radius: 8px;
+  background: transparent; font-size: .75rem; font-weight: 600;
+  color: #64748b; cursor: pointer; font-family: inherit;
+  transition: all .15s; white-space: nowrap;
+}
+.st-per-btn.actif {
+  background: #fff; color: #1d4ed8; font-weight: 800;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+/* ── KPI cards ────────────────────────────────────────────────── */
+.st-kpi-grille {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-bottom: 20px;
+}
+.st-kpi {
+  border-radius: 12px; padding: 14px 16px;
+  border: 1px solid transparent; transition: transform .15s;
+}
+.st-kpi:hover { transform: translateY(-2px); }
+.st-kpi-val  { font-size: 1.5rem; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+.st-kpi-lbl  { font-size: .75rem; font-weight: 700; color: #1e293b; margin-bottom: 2px; }
+.st-kpi-sous { font-size: .65rem; color: #94a3b8; }
+
+/* ── Cards ────────────────────────────────────────────────────── */
+.st-card {
+  background: #fff; border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+  overflow: hidden;
+}
+.st-card-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 16px 18px 10px; border-bottom: 1px solid #f1f5f9;
+}
+.st-card-titre { font-size: .92rem; font-weight: 800; color: #0f172a; }
+.st-card-sous  { font-size: .68rem; color: #94a3b8; margin-top: 1px; }
+.st-card-badge {
+  font-size: .65rem; font-weight: 700; color: #475569;
+  background: #f1f5f9; padding: 3px 9px; border-radius: 20px; white-space: nowrap;
+}
+
+/* ── Layout lignes ────────────────────────────────────────────── */
+.st-row-haut {
+  display: grid; grid-template-columns: 1fr 280px;
+  gap: 16px; margin-bottom: 16px;
+}
+.st-row-bas {
+  display: grid; grid-template-columns: 1fr 340px;
+  gap: 16px;
+}
+.st-card-large  { }
+.st-card-donuts { display: flex; flex-direction: column; }
+.st-card-evo    { }
+.st-card-champ  { }
+
+/* ── SVG charts ───────────────────────────────────────────────── */
+.st-svg { width: 100%; height: auto; display: block; }
+.st-chart-wrap { padding: 12px 10px 4px; overflow: hidden; }
+
+/* ── Légende combinaisons ─────────────────────────────────────── */
+.st-legende-combi {
+  display: flex; flex-wrap: wrap; gap: 6px 14px;
+  padding: 6px 16px 14px;
+}
+.st-leg-item {
+  display: flex; align-items: center; gap: 5px;
+  font-size: .68rem; font-weight: 600; color: #475569;
+}
+.st-leg-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.st-leg-line {
+  width: 16px; height: 2.5px; border-radius: 2px; flex-shrink: 0;
+}
+
+/* ── Donuts ───────────────────────────────────────────────────── */
+.st-donuts-grille {
+  display: flex; justify-content: space-around; align-items: center;
+  padding: 16px 8px 8px; flex: 1;
+}
+.st-donut-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.st-donut-meta {
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+}
+.st-donut-ok  { font-size: .68rem; font-weight: 700; color: #16a34a; }
+.st-donut-tot { font-size: .62rem; color: #94a3b8; }
+
+.st-donut-legende {
+  padding: 0 14px 14px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.st-dl-item {
+  display: flex; align-items: center; gap: 7px;
+  font-size: .68rem; color: #64748b;
+}
+
+/* ── Évolution ────────────────────────────────────────────────── */
+.st-evo-resume { text-align: right; }
+.st-evo-moy {
+  font-size: .72rem; font-weight: 700; color: #1d4ed8;
+  background: #eff6ff; padding: 3px 9px; border-radius: 8px;
+}
+.st-evo-legende {
+  display: flex; gap: 14px; padding: 6px 14px 14px; flex-wrap: wrap;
+}
+
+/* ── Championnats barres horiz ───────────────────────────────── */
+.st-champ-liste { padding: 8px 14px 14px; display: flex; flex-direction: column; gap: 7px; }
+.st-champ-row {
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; border-radius: 6px; padding: 3px 4px;
+  transition: background .12s;
+}
+.st-champ-row:hover { background: #f8fafc; }
+.st-champ-nom {
+  width: 120px; font-size: .71rem; font-weight: 600; color: #1e293b;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0;
+}
+.st-champ-barre-fond {
+  flex: 1; height: 8px; background: #f1f5f9; border-radius: 99px; overflow: hidden;
+}
+.st-champ-barre-fill { height: 100%; border-radius: 99px; }
+.st-champ-pct  { width: 36px; font-size: .72rem; font-weight: 800; text-align: right; flex-shrink: 0; }
+.st-champ-detail { width: 42px; font-size: .62rem; color: #94a3b8; flex-shrink: 0; }
+
+/* ── Vide ─────────────────────────────────────────────────────── */
+.st-vide {
+  padding: 32px; text-align: center; color: #94a3b8;
+  font-size: .82rem; font-style: italic;
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .st-kpi-grille { grid-template-columns: repeat(2, 1fr); }
+  .st-row-haut   { grid-template-columns: 1fr; }
+  .st-row-bas    { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .page-stats    { padding: 0 12px 24px; }
+  .st-kpi-grille { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .st-kpi-val    { font-size: 1.2rem; }
+}

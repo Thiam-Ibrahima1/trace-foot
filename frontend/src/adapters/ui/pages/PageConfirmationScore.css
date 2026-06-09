@@ -1,0 +1,255 @@
+/* PageConfirmationScore.css — Confirmation du score */
+
+.page-confirmation { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem; }
+
+/* ── Calendrier du jour (Point 8) ──────────────────────────── */
+.conf-calendrier { }
+.conf-cal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; background: #1b5e20; color: #fff;
+  border-radius: 10px 10px 0 0; font-size: 0.85rem; font-weight: 600;
+}
+.conf-cal-total { background: rgba(255,255,255,.2); padding: 2px 8px; border-radius: 8px; font-size: 0.72rem; }
+.conf-cal-champ { background: #fff; border: 1px solid #e2e8f0; border-top: none; }
+.conf-cal-champ:last-child { border-radius: 0 0 10px 10px; }
+.conf-cal-champ-header {
+  padding: 7px 14px; background: #f8fafc; font-size: 0.72rem; font-weight: 700;
+  color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; border-bottom: 1px solid #e2e8f0;
+}
+.conf-cal-ligne {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 8px 14px; border-bottom: 1px solid #f5f5f5;
+}
+.conf-cal-ligne:last-child { border-bottom: none; }
+.conf-cal-ligne.correct   { background: #f0fdf4; border-left: 3px solid #16a34a; }
+.conf-cal-ligne.incorrect { background: #fff5f5; border-left: 3px solid #ef4444; }
+.conf-cal-match { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.conf-cal-heure { font-size: 0.72rem; font-weight: 700; color: #475569; min-width: 38px; flex-shrink: 0; }
+.conf-cal-dom, .conf-cal-ext { font-size: 0.82rem; font-weight: 600; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px; }
+.conf-cal-scores { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.conf-cal-predit { font-size: 0.88rem; font-weight: 800; color: #1b5e20; }
+.conf-cal-sep    { font-size: 0.7rem; color: #94a3b8; }
+.conf-cal-reel   { font-size: 0.88rem; font-weight: 800; }
+.conf-cal-reel.ok  { color: #16a34a; }
+.conf-cal-reel.nok { color: #ef4444; }
+.conf-cal-combis { display: flex; gap: 4px; flex-wrap: wrap; }
+.conf-cal-combi  { font-size: 0.68rem; font-weight: 800; padding: 2px 7px; border-radius: 7px; border: 1.5px solid; }
+.conf-cal-combi.combi-pending { background: #fef9c3; color: #92400e; border-color: #fde68a; }
+.conf-cal-combi.combi-ok      { background: #dcfce7; color: #15803d;  border-color: #86efac; }
+.conf-cal-combi.combi-nok     { background: #fee2e2; color: #dc2626;  border-color: #fca5a5; }
+
+.conf-header { margin-bottom: 1.5rem; }
+.conf-titre  { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin: 0 0 0.4rem; }
+.conf-sous   { color: #64748b; font-size: 0.9rem; margin: 0; line-height: 1.5; }
+
+/* Onglets */
+.conf-onglets { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0; }
+.conf-onglet  { padding: 0.6rem 1.2rem; border: none; background: none; cursor: pointer; font-size: 0.9rem;
+  color: #64748b; border-bottom: 3px solid transparent; margin-bottom: -2px; font-weight: 500; }
+.conf-onglet.actif { color: #2563eb; border-bottom-color: #2563eb; }
+.badge-rouge { background: #dc2626; color: #fff; border-radius: 99px; padding: 0.1rem 0.5rem;
+  font-size: 0.75rem; margin-left: 0.4rem; }
+
+/* Message de retour */
+.conf-msg          { padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; font-weight: 600; }
+.conf-msg.ok       { background: #dcfce7; color: #166534; }
+.conf-msg.approche { background: #fef9c3; color: #854d0e; }
+.conf-msg.erreur   { background: #fee2e2; color: #991b1b; }
+
+/* Carte à confirmer */
+.conf-carte { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+  padding: 1rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,.05); }
+.conf-carte.vip { border-left: 4px solid #d97706; background: #fffbeb; }
+.conf-carte.correct  { border-left: 4px solid #16a34a; }
+.conf-carte.approche { border-left: 4px solid #d97706; }
+
+.conf-carte-top  { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.conf-competition{ font-size: 0.75rem; background: #f1f5f9; color: #475569; padding: 0.2rem 0.5rem; border-radius: 6px; }
+.conf-date       { font-size: 0.75rem; color: #94a3b8; margin-left: auto; }
+.badge-vip       { background: #d97706; color: #fff; font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 6px; }
+
+.conf-carte-match{ display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.8rem; }
+.conf-equipe     { font-weight: 600; font-size: 0.95rem; color: #1e293b; }
+.conf-vs         { color: #94a3b8; font-size: 0.8rem; }
+
+.conf-carte-scores  { display: flex; gap: 1rem; margin-bottom: 0.8rem; }
+.conf-score-bloc    { background: #f8fafc; border-radius: 8px; padding: 0.6rem 1rem; text-align: center; min-width: 90px; }
+.conf-score-bloc.predit { border: 2px solid #2563eb22; }
+.conf-score-bloc.reel.ok  { border: 2px solid #16a34a; background: #dcfce7; }
+.conf-score-bloc.reel.nok { border: 2px solid #d97706; background: #fef9c3; }
+.conf-score-label   { display: block; font-size: 0.7rem; color: #64748b; margin-bottom: 0.2rem; }
+.conf-score-num     { display: block; font-size: 1.4rem; font-weight: 800; color: #1e293b; }
+
+.conf-trace-status    { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 99px; display: inline-block; margin-bottom: 0.6rem; }
+.conf-trace-status.ok { background: #dcfce7; color: #166534; }
+.conf-trace-status.partiel { background: #fee2e2; color: #991b1b; }
+
+/* ── Zone d'actions ─────────────────────────────────────────── */
+.conf-actions {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem;
+}
+
+/* Bouton certifier principal */
+.conf-btn-certifier {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 0.65rem 1rem; background: #16a34a; color: #fff;
+  border: none; border-radius: 8px; cursor: pointer;
+  font-weight: 700; font-size: 0.88rem; font-family: inherit;
+  transition: background 0.15s; min-width: 140px;
+}
+.conf-btn-certifier:hover { background: #15803d; }
+
+/* Bouton modifier score réel (avant certification) */
+.conf-btn-modifier {
+  display: flex; align-items: center; gap: 5px;
+  padding: 0.6rem 0.9rem; background: none;
+  border: 1.5px solid #f59e0b; color: #d97706;
+  border-radius: 8px; cursor: pointer;
+  font-weight: 600; font-size: 0.82rem; font-family: inherit;
+  transition: background 0.12s;
+}
+.conf-btn-modifier:hover { background: #fffbeb; }
+
+/* Bouton réinitialiser (effacer score réel) */
+.conf-btn-reinit {
+  display: flex; align-items: center; gap: 5px;
+  padding: 0.6rem 0.9rem; background: none;
+  border: 1.5px solid #e2e8f0; color: #64748b;
+  border-radius: 8px; cursor: pointer;
+  font-weight: 600; font-size: 0.82rem; font-family: inherit;
+  transition: all 0.12s;
+}
+.conf-btn-reinit:hover { border-color: #94a3b8; color: #475569; background: #f8fafc; }
+
+/* Bouton recertifier (scores confirmés) */
+.conf-btn-recertifier {
+  display: flex; align-items: center; gap: 6px;
+  padding: 0.6rem 1rem; background: none;
+  border: 1.5px solid #2563eb; color: #2563eb;
+  border-radius: 8px; cursor: pointer;
+  font-weight: 600; font-size: 0.84rem; font-family: inherit;
+  transition: background 0.12s;
+}
+.conf-btn-recertifier:hover { background: #eff6ff; }
+
+/* Bouton supprimer (icône dans l'en-tête de carte) */
+.conf-btn-suppr {
+  display: flex; align-items: center; gap: 4px;
+  background: none; border: 1.5px solid #fecaca;
+  color: #ef4444; border-radius: 6px;
+  padding: 3px 8px; cursor: pointer; font-family: inherit;
+  font-size: 0.7rem; font-weight: 600;
+  transition: background 0.12s; margin-left: auto;
+}
+.conf-btn-suppr:hover { background: #fee2e2; }
+
+/* Zone de confirmation de suppression */
+.conf-confirm-suppr {
+  background: #fff0f0; border: 1.5px solid #fca5a5;
+  border-radius: 8px; padding: 0.6rem 0.9rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px; margin-bottom: 0.5rem;
+  font-size: 0.82rem; color: #c62828; font-weight: 500;
+}
+.conf-confirm-actions { display: flex; gap: 6px; }
+.conf-btn-oui {
+  padding: 4px 14px; background: #dc2626; color: #fff;
+  border: none; border-radius: 6px; cursor: pointer;
+  font-size: 0.78rem; font-weight: 700; font-family: inherit;
+}
+.conf-btn-oui:hover { background: #b91c1c; }
+.conf-btn-non {
+  padding: 4px 14px; background: none; color: #64748b;
+  border: 1.5px solid #e2e8f0; border-radius: 6px; cursor: pointer;
+  font-size: 0.78rem; font-weight: 600; font-family: inherit;
+}
+
+/* ── Modal : avertissement re-certification ─────────────────── */
+.conf-modal-sub  { display: block; font-size: 0.75rem; color: #64748b; margin-bottom: 4px; }
+.conf-modal-avert {
+  display: flex; align-items: center; gap: 8px;
+  background: #fffbeb; border: 1px solid #fde68a;
+  border-radius: 8px; padding: 0.6rem 0.9rem;
+  font-size: 0.82rem; color: #92400e;
+  margin-bottom: 0.75rem;
+}
+.conf-input-score {
+  font-size: 1.3rem !important;
+  letter-spacing: 4px; text-align: center; font-weight: 700;
+}
+
+/* ── Message fermer ─────────────────────────────────────────── */
+.conf-msg { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.conf-msg.info { background: #f0fdf4; color: #166534; }
+.conf-msg-fermer {
+  background: none; border: none; cursor: pointer;
+  color: inherit; opacity: 0.6; font-size: 0.9rem; padding: 0;
+  flex-shrink: 0;
+}
+.conf-msg-fermer:hover { opacity: 1; }
+
+/* ── Spinner de chargement ──────────────────────────────────── */
+.conf-charg {
+  display: flex; align-items: center; gap: 10px;
+  justify-content: center; padding: 3rem; color: #94a3b8;
+}
+.conf-charg-spinner {
+  width: 20px; height: 20px; border: 2px solid #e2e8f0;
+  border-top-color: #16a34a; border-radius: 50%;
+  animation: conf-spin 0.7s linear infinite; flex-shrink: 0;
+}
+@keyframes conf-spin { to { transform: rotate(360deg); } }
+
+/* Date de certification */
+.conf-date-certif {
+  font-size: 0.72rem; color: #94a3b8; margin: 0.25rem 0 0;
+  font-style: italic;
+}
+
+/* Bouton ancien (compatibilité) */
+.btn-ouvrir-confirmation { width: 100%; padding: 0.65rem; background: #2563eb; color: #fff;
+  border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+.btn-ouvrir-confirmation:hover { background: #1d4ed8; }
+
+.badge-resultat.ok     { background: #dcfce7; color: #166534; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 6px; }
+.badge-resultat.approche{ background: #fef9c3; color: #854d0e; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 6px; }
+
+/* Overlay modal de confirmation */
+.conf-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 100;
+  display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.conf-modal { background: #fff; border-radius: 16px; padding: 1.5rem; width: 100%; max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.2); }
+.conf-modal-titre { font-size: 1.15rem; font-weight: 700; color: #1e293b; margin: 0 0 1rem; }
+.conf-modal-info  { background: #eff6ff; padding: 0.75rem; border-radius: 8px; margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.75rem; }
+.conf-score-predit{ font-size: 1.8rem; font-weight: 800; color: #2563eb; }
+.conf-modal-note  { color: #64748b; font-size: 0.85rem; margin-bottom: 1rem; }
+
+.conf-form     { display: flex; flex-direction: column; gap: 1rem; }
+.conf-field    { display: flex; flex-direction: column; gap: 0.3rem; }
+.conf-label    { font-size: 0.85rem; font-weight: 600; color: #374151; }
+.conf-input    { padding: 0.6rem 0.9rem; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 1rem; }
+.conf-input:focus { outline: none; border-color: #2563eb; }
+
+.conf-modal-actions { display: flex; gap: 0.75rem; }
+.btn-annuler    { flex: 1; padding: 0.65rem; background: #f1f5f9; border: none; border-radius: 8px;
+  cursor: pointer; font-weight: 600; color: #64748b; }
+.btn-confirmer  { flex: 2; padding: 0.65rem; background: #16a34a; color: #fff; border: none;
+  border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 0.95rem; }
+.btn-confirmer:disabled { opacity: 0.6; }
+
+/* Taux de réussite historique */
+.conf-taux-blocs { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+.conf-taux-bloc  { flex: 1; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+  padding: 1rem; text-align: center; }
+.conf-taux-bloc.vip { border-left: 3px solid #d97706; }
+.conf-taux-val   { display: block; font-size: 2rem; font-weight: 800; color: #2563eb; }
+.conf-taux-lbl   { display: block; font-size: 0.8rem; color: #64748b; margin-top: 0.25rem; }
+
+/* Groupe de prédictions */
+.conf-groupe-titre { font-size: 0.95rem; font-weight: 700; color: #374151; margin: 1rem 0 0.75rem; }
+
+.conf-vide       { text-align: center; padding: 3rem 1rem; color: #94a3b8; }
+.conf-vide-icon  { display: block; font-size: 3rem; margin-bottom: 0.75rem; }
+.conf-charg      { text-align: center; padding: 2rem; color: #94a3b8; }
+.conf-note       { font-size: 0.8rem; color: #64748b; font-style: italic; margin: 0.4rem 0 0; }

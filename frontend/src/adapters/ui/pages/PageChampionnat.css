@@ -1,0 +1,125 @@
+/* PageChampionnat.css */
+.page-champ { background:#f5f5f5; min-height:100vh; padding-bottom:75px; }
+
+/* En-tête */
+.pc-header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px 12px; background:#fff; border-bottom:1px solid #f0f0f0; }
+.pc-titre  { font-size:1.05rem; font-weight:800; color:#1e293b; }
+.pc-btn-cle { background:none; border:1.5px solid #e2e8f0; border-radius:8px; padding:6px; cursor:pointer; color:#64748b; display:flex; align-items:center; transition:border-color .15s,color .15s; }
+.pc-btn-cle:hover { border-color:#2e7d32; color:#2e7d32; }
+
+/* Zone clé API */
+.pc-cle-zone { margin:12px; padding:14px; background:#fff; border-radius:12px; border:1.5px solid #e2e8f0; }
+.pc-cle-info { font-size:.8rem; color:#64748b; line-height:1.5; margin-bottom:10px; }
+.pc-cle-form { display:flex; gap:8px; }
+.pc-cle-input { flex:1; padding:8px 12px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:.85rem; font-family:inherit; }
+.pc-cle-input:focus { outline:none; border-color:#2e7d32; }
+.pc-cle-btn { padding:8px 14px; background:#2e7d32; color:#fff; border:none; border-radius:8px; font-weight:700; font-size:.82rem; cursor:pointer; font-family:inherit; white-space:nowrap; }
+.pc-cle-actuelle { margin-top:8px; font-size:.75rem; color:#94a3b8; }
+.pc-cle-actuelle code { background:#f1f5f9; padding:1px 5px; border-radius:4px; }
+
+/* Avertissement */
+.pc-avertissement { display:flex; align-items:flex-start; gap:12px; margin:12px; padding:14px; background:#fffbeb; border-radius:12px; border:1.5px solid #fde68a; color:#92400e; font-size:.82rem; }
+.pc-avertissement strong { display:block; margin-bottom:4px; }
+.pc-avertissement p { margin:0; color:#a16207; }
+
+/* ── Liste des championnats ───────────────────────────────── */
+.pc-liste { padding:4px 0; }
+
+.pc-pays-sep { display:flex; align-items:center; gap:8px; padding:8px 14px 5px; font-size:.65rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:.8px; background:#f9fafb; border-bottom:1px solid #f0f0f0; }
+
+.pc-champ-ligne { display:flex; align-items:center; gap:12px; width:100%; padding:13px 16px; background:#fff; border:none; border-bottom:1px solid #f5f5f5; cursor:pointer; text-align:left; font-family:inherit; transition:background .12s; }
+.pc-champ-ligne:hover:not(.desactive) { background:#f8faf8; }
+.pc-champ-ligne.desactive { opacity:.45; cursor:not-allowed; }
+.pc-champ-nom { flex:1; font-size:.9rem; font-weight:600; color:#1e293b; }
+.pc-champ-chevron { color:#cbd5e1; display:flex; align-items:center; }
+
+/* ── En-tête détail ───────────────────────────────────────── */
+.pc-detail-header { display:flex; align-items:center; gap:10px; padding:12px 16px; background:#fff; border-bottom:1px solid #f0f0f0; }
+.pc-retour { display:flex; align-items:center; gap:5px; background:none; border:1.5px solid #e2e8f0; border-radius:8px; padding:5px 10px; color:#64748b; font-size:.78rem; font-weight:600; cursor:pointer; font-family:inherit; transition:border-color .15s,color .15s; }
+.pc-retour:hover { border-color:#2e7d32; color:#2e7d32; }
+
+/* Bannière */
+.pc-banniere { display:flex; align-items:center; gap:14px; padding:16px; background:#fff; border-bottom:1px solid #f0f0f0; }
+.pc-banniere-info { display:flex; flex-direction:column; gap:3px; }
+.pc-banniere-pays { font-size:.62rem; font-weight:600; color:#94a3b8; text-transform:uppercase; letter-spacing:.5px; }
+.pc-banniere-nom  { font-size:1.15rem; font-weight:800; color:#1e293b; margin:0; }
+.pc-banniere-saison { font-size:.78rem; color:#64748b; }
+
+/* Onglets principaux */
+.pc-onglets { display:flex; background:#fff; border-bottom:2px solid #e2e8f0; overflow-x:auto; }
+.pc-onglet { flex:1; padding:12px 8px; background:none; border:none; border-bottom:2.5px solid transparent; font-size:.78rem; font-weight:600; color:#94a3b8; cursor:pointer; font-family:inherit; white-space:nowrap; transition:color .15s,border-color .15s; text-transform:uppercase; letter-spacing:.3px; }
+.pc-onglet.actif { color:#ef4444; border-bottom-color:#ef4444; }
+
+/* États */
+.pc-charg { display:flex; align-items:center; justify-content:center; gap:10px; padding:48px 20px; color:#94a3b8; font-size:.88rem; }
+.pc-spinner { width:18px; height:18px; border:2px solid #e2e8f0; border-top-color:#2e7d32; border-radius:50%; animation:pc-spin .7s linear infinite; display:inline-block; flex-shrink:0; }
+@keyframes pc-spin { to{transform:rotate(360deg)} }
+.pc-erreur { margin:14px; padding:12px 16px; background:#fff0f0; color:#dc2626; border-radius:10px; font-size:.85rem; border-left:3px solid #ef5350; }
+.pc-vide { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px 20px; color:#94a3b8; text-align:center; gap:8px; }
+.pc-vide p { font-size:.95rem; font-weight:600; color:#64748b; margin:0; }
+.pc-vide span { font-size:.78rem; }
+
+/* ── Tableau classement (league) ─────────────────────────── */
+.pc-table { width:100%; border-collapse:collapse; background:#fff; font-size:.8rem; }
+.pc-th { padding:9px 6px; text-align:center; font-size:.65rem; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid #f0f0f0; background:#fafafa; }
+.pc-th-equipe { text-align:left; padding-left:12px; }
+.pc-th-num { width:34px; } .pc-th-pts { width:40px; }
+.pc-tr { border-bottom:1px solid #f8faf8; transition:background .1s; }
+.pc-tr:hover { background:#f8faf8; }
+.pc-td { padding:9px 6px; text-align:center; color:#475569; }
+.pc-td-num { width:34px; }
+.pc-td-equipe { display:flex; align-items:center; gap:8px; padding-left:12px; text-align:left; }
+.pc-td-centre { color:#64748b; font-size:.78rem; }
+.pc-td-pts { font-weight:800; color:#1e293b; font-size:.88rem; }
+.pc-rang { width:24px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700; color:#fff; }
+.pc-eq-logo { width:20px; height:20px; object-fit:contain; flex-shrink:0; }
+.pc-eq-nom { font-size:.82rem; font-weight:600; color:#1e293b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:130px; }
+.pc-buts { font-size:.76rem; }
+.pc-diff-pos { color:#16a34a; font-weight:700; }
+.pc-diff-neg { color:#dc2626; }
+
+/* ── Barre des étapes (phases knockout) ──────────────────── */
+.pc-etapes-barre { display:flex; gap:4px; overflow-x:auto; padding:10px 12px; background:#fff; border-bottom:1px solid #e2e8f0; scrollbar-width:none; }
+.pc-etapes-barre::-webkit-scrollbar { display:none; }
+.pc-etape-btn { flex-shrink:0; padding:6px 12px; background:none; border:1.5px solid #e2e8f0; border-radius:10px; font-size:.72rem; font-weight:600; color:#64748b; cursor:pointer; font-family:inherit; white-space:nowrap; transition:all .15s; }
+.pc-etape-btn:hover { border-color:#2e7d32; color:#2e7d32; }
+.pc-etape-btn.actif { background:#2e7d32; border-color:#2e7d32; color:#fff; }
+
+/* ── Carte match knockout ─────────────────────────────────── */
+.pc-knockout-liste { padding:10px 12px; display:flex; flex-direction:column; gap:8px; }
+.pc-ko-carte { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,.06); }
+.pc-ko-carte.en-cours { border:1.5px solid #16a34a; }
+.pc-ko-equipe { display:flex; align-items:center; gap:10px; padding:11px 14px; border-bottom:1px solid #f5f5f5; }
+.pc-ko-equipe.ext { border-bottom:none; }
+.pc-ko-equipe.gagnant .pc-ko-nom { font-weight:800; color:#1b5e20; }
+.pc-ko-equipe.perdant { opacity:.6; }
+.pc-ko-logo { width:24px; height:24px; object-fit:contain; flex-shrink:0; }
+.pc-ko-nom  { flex:1; font-size:.85rem; font-weight:600; color:#1e293b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.pc-ko-score { font-size:1.15rem; font-weight:800; color:#334155; min-width:28px; text-align:right; flex-shrink:0; }
+.pc-ko-score.live { color:#ef4444; }
+.pc-ko-sep  { display:flex; align-items:center; justify-content:center; padding:4px; background:#f8faf8; }
+.pc-ko-heure { font-size:.72rem; color:#94a3b8; font-weight:600; }
+.pc-ko-fin  { font-size:.68rem; color:#94a3b8; font-weight:700; }
+.pc-live-mini { font-size:.65rem; font-weight:800; color:#ef4444; background:#fee2e2; padding:2px 6px; border-radius:6px; }
+
+/* ── Séparateur de date ───────────────────────────────────── */
+.pc-date-sep { padding:10px 14px 6px; font-size:.78rem; font-weight:700; color:#374151; background:#f9fafb; border-bottom:1px solid #f0f0f0; text-transform:capitalize; }
+.pc-matchs-liste { }
+
+/* ── Carte match résultat ─────────────────────────────────── */
+.pc-res-carte { display:flex; align-items:center; gap:8px; padding:11px 14px; background:#fff; border-bottom:1px solid #f8faf8; }
+.pc-res-equipe { display:flex; align-items:center; gap:6px; flex:1; }
+.pc-res-equipe.ext { flex-direction:row-reverse; }
+.pc-res-equipe.gagnant .pc-res-nom { font-weight:700; color:#1b5e20; }
+.pc-res-logo { width:20px; height:20px; object-fit:contain; flex-shrink:0; }
+.pc-res-nom  { font-size:.82rem; font-weight:500; color:#1e293b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100px; }
+.pc-res-score { font-size:1.1rem; font-weight:800; color:#334155; min-width:24px; text-align:center; flex-shrink:0; }
+.pc-res-sep { font-size:.8rem; color:#94a3b8; font-weight:600; flex-shrink:0; padding:0 2px; }
+
+/* ── Carte match calendrier ───────────────────────────────── */
+.pc-cal-carte { display:flex; align-items:center; gap:10px; padding:11px 14px; background:#fff; border-bottom:1px solid #f8faf8; }
+.pc-cal-carte.en-cours { background:#f0fdf4; border-left:2px solid #16a34a; }
+.pc-cal-heure { min-width:44px; font-size:.78rem; font-weight:700; color:#334155; flex-shrink:0; text-align:center; }
+.pc-cal-corps { flex:1; display:flex; align-items:center; gap:8px; min-width:0; }
+.pc-cal-equipe { flex:1; display:flex; align-items:center; gap:6px; font-size:.82rem; font-weight:600; color:#1e293b; }
+.pc-cal-vs { font-size:.72rem; color:#94a3b8; font-weight:600; flex-shrink:0; }

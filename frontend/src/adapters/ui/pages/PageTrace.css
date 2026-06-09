@@ -1,0 +1,562 @@
+/* ============================================================
+   PageTrace.css — Générateur de tracé — style traditionnel blanc/noir
+   ============================================================ */
+
+.page-trace   { max-width: 860px; }
+.trace-header { margin-bottom: 1.25rem; }
+
+/* ════════════════════════════════════════════════════════════
+   ÉTAPE 1 — Design terrain blanc
+   ════════════════════════════════════════════════════════════ */
+
+.trace-e1-page {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 20px 24px 28px;
+  background: #fff;
+  border-radius: 16px;
+  min-height: 480px;
+}
+
+/* Terrain principal */
+.trace-e1-terrain {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 12px; align-items: stretch;
+  background: #fff;
+  border: none;
+  border-radius: 12px; padding: 24px 20px;
+  position: relative;
+}
+
+/* Équipe */
+.trace-e1-equipe {
+  display: flex; flex-direction: column; gap: 8px; z-index: 1;
+  justify-content: center;
+}
+.trace-e1-ext { align-items: center; }
+.trace-e1-dom { align-items: center; }
+.trace-e1-eq-lbl {
+  font-size: .85rem; font-weight: 800; color: #1e293b;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.trace-e1-eq-input {
+  background: transparent; border: none;
+  border-radius: 0; padding: 10px 12px;
+  font-size: .88rem; font-weight: 800; color: #1e293b;
+  font-family: inherit; outline: none; width: 80%;
+}
+.trace-e1-eq-input::placeholder { color: #94a3b8; font-weight: 400; font-size: .72rem; }
+.trace-e1-eq-input:focus { outline: none; }
+.trace-e1-eq-input:disabled,
+.trace-e1-heure-input:disabled { opacity: .3; cursor: not-allowed; }
+
+/* Centre */
+.trace-e1-centre {
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1; min-width: 100px;
+}
+
+/* Heure HH:MM */
+.trace-e1-heure {
+  display: flex; align-items: center; gap: 6px;
+}
+.trace-e1-heure-input {
+  width: 48px; background: transparent; border: none;
+  border-radius: 0; padding: 10px 6px; text-align: center;
+  font-size: 1rem; font-weight: 700; color: #1e293b;
+  font-family: inherit; outline: none;
+}
+.trace-e1-heure-input::placeholder { color: #94a3b8; font-size: .78rem; }
+.trace-e1-heure-input:focus { outline: none; }
+.trace-e1-heure-sep { color: rgba(30,41,59,.25); font-weight: 900; font-size: 1.2rem; }
+
+/* Blocs de points */
+.trace-e1-blocs {
+  background: #fff; border: 1.5px solid #e2e8f0;
+  border-radius: 12px; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.trace-e1-bloc { display: flex; align-items: flex-start; gap: 12px; }
+.trace-e1-bloc-rangees { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.trace-e1-rangee { display: flex; align-items: center; gap: 2.5px; flex-wrap: nowrap; }
+.trace-e1-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+  background: #1e293b;
+}
+.trace-e1-cap-val {
+  font-size: .58rem; font-weight: 700; color: #94a3b8;
+  margin-left: 6px; flex-shrink: 0;
+}
+
+/* Actions étape 1 */
+.trace-e1-actions {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.trace-lien-action {
+  font-size: .88rem; font-weight: 700; color: #1e293b;
+  cursor: pointer; text-decoration: none; opacity: .45;
+  transition: opacity .15s; user-select: none;
+}
+.trace-lien-action:hover { opacity: .7; }
+.trace-lien-action.disabled { opacity: .18; cursor: not-allowed; }
+
+/* ── Écran d'accueil (étape 0) ─────────────────────────────── */
+.trace-accueil {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center;
+  padding: 48px 24px; gap: 20px; min-height: 420px;
+}
+.trace-accueil-ico {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: #1e293b;
+  display: flex; align-items: center; justify-content: center;
+}
+.trace-accueil-ico svg { width: 36px; height: 36px; stroke: #fff; fill: #fff; }
+.trace-accueil-titre { font-size: 1.6rem; font-weight: 900; color: #0f172a; margin: 0; }
+.trace-accueil-sous  { font-size: .9rem; color: #64748b; max-width: 380px; line-height: 1.5; margin: 0; }
+.trace-accueil-etapes {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 4px 0;
+}
+.trace-accueil-step {
+  display: flex; align-items: center; gap: 6px;
+  background: #f8fafc; border: 1px solid #e2e8f0;
+  border-radius: 20px; padding: 5px 12px;
+}
+.trace-accueil-step-n {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #1e293b; color: #fff;
+  font-size: .7rem; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.trace-accueil-step-lbl { font-size: .72rem; font-weight: 700; color: #374151; }
+.trace-btn-commencer {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 36px; border: none; border-radius: 14px;
+  background: #1e293b; color: #fff; font-size: 1rem; font-weight: 800;
+  font-family: inherit; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(15,23,42,.25);
+  transition: transform .15s, box-shadow .15s; margin-top: 8px;
+}
+.trace-btn-commencer:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,23,42,.3); }
+.trace-btn-commencer:active { transform: translateY(0); }
+
+/* Bandeau match pré-sélectionné */
+.trace-prefill-banner {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  background: #1e293b; color: #fff; border-radius: 10px;
+  padding: 10px 16px; margin-bottom: 1rem; font-size: 0.85rem;
+}
+.trace-prefill-banner strong { font-weight: 800; }
+.trace-prefill-comp  { background: rgba(255,255,255,.15); padding: 2px 8px; border-radius: 8px; font-size: 0.75rem; }
+.trace-prefill-heure { font-size: 0.75rem; opacity: .75; }
+.trace-titre { font-size: 1.25rem; font-weight: 800; color: #1e293b; margin: 0 0 0.3rem; }
+.trace-sous  { font-size: 0.82rem; color: #64748b; margin: 0; }
+
+/* ── Indicateur d'étapes ─────────────────────────────────────── */
+.trace-etapes { display: flex; align-items: center; margin-bottom: 1.5rem;
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.75rem 1rem; }
+.etape-point  { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; min-width: 60px; }
+.etape-num    { width: 28px; height: 28px; border-radius: 50%; background: #e2e8f0;
+  color: #94a3b8; font-weight: 800; font-size: 0.78rem;
+  display: flex; align-items: center; justify-content: center; }
+.etape-lbl    { font-size: 0.62rem; color: #94a3b8; white-space: nowrap; font-weight: 500; }
+.etape-point.fait  .etape-num { background: #475569; color: #fff; }
+.etape-point.fait  .etape-lbl { color: #475569; font-weight: 700; }
+.etape-point.actif .etape-num { background: #1e293b; color: #fff; box-shadow: 0 0 0 3px #e2e8f0; }
+.etape-point.actif .etape-lbl { color: #1e293b; font-weight: 700; }
+.etape-ligne  { flex: 1; height: 2px; background: #e2e8f0; margin: 0 4px; margin-bottom: 18px; }
+
+/* ── Carte d'étape ───────────────────────────────────────────── */
+.trace-carte {
+  background: #fff; border: 1.5px solid #1e293b; border-radius: 14px;
+  padding: 1.25rem; margin-bottom: 1rem;
+}
+.trace-carte-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+.trace-carte-num {
+  width: 30px; height: 30px; border-radius: 50%; background: #1e293b;
+  color: #fff; font-weight: 900; font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.trace-carte-titre { font-size: 1rem; font-weight: 800; color: #1e293b; margin: 0; }
+.trace-carte-sous  { font-size: 0.8rem; color: #64748b; margin: -0.5rem 0 1rem; line-height: 1.5; }
+.trace-section-titre { font-size: 0.82rem; font-weight: 700; color: #374151; display: block; margin: 1rem 0 0.5rem; }
+
+/* Champ de formulaire */
+.trace-field     { display: flex; flex-direction: column; gap: 3px; }
+.trace-field-lbl { font-size: 0.72rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; }
+
+/* ── Boutons ─────────────────────────────────────────────────── */
+.trace-btn-primary {
+  width: 100%; padding: 0.82rem; border: none; border-radius: 12px;
+  font-size: 0.95rem; font-weight: 800; cursor: pointer; margin-top: 1rem;
+  background: #1e293b; color: #fff;
+  box-shadow: 0 4px 14px rgba(15,23,42,.2);
+  transition: opacity .15s, transform .1s; font-family: inherit;
+}
+.trace-btn-primary:hover    { opacity: .88; transform: translateY(-1px); }
+.trace-btn-primary:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+.trace-btn-primary.trace-btn-lancer  { width: auto; padding: 0.7rem 1.6rem; font-size: 0.88rem; display: block; margin: 1rem auto 0; }
+.trace-btn-primary.trace-btn-publier { flex: 1; width: auto; }
+
+.trace-btn-auto {
+  padding: 0.55rem 1.1rem; background: #f8fafc; color: #1e293b;
+  border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.82rem;
+  font-weight: 700; cursor: pointer; margin-bottom: 1rem; font-family: inherit;
+  transition: background 0.15s;
+}
+.trace-btn-auto:hover { background: #e2e8f0; }
+
+.trace-btn-retour {
+  padding: 0.55rem 1.1rem; background: #fff; color: #1e293b;
+  border: 1.5px solid #1e293b; border-radius: 8px; font-size: 0.82rem;
+  font-weight: 600; cursor: pointer; font-family: inherit; transition: background .12s;
+}
+.trace-btn-retour:hover { background: #f1f5f9; }
+
+.trace-btn-row { display: flex; gap: 0.75rem; margin-top: 1rem; align-items: center; }
+.trace-btn-row .trace-btn-primary { flex: 1; margin-top: 0; }
+
+/* Messages */
+.trace-msg { padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; margin-top: 0.5rem; }
+.trace-msg.warn   { background: #fff8e1; color: #92400e; }
+.trace-msg.ok     { background: #f0fdf4; color: #166534; }
+.trace-msg.erreur { background: #ffebee; color: #c62828; }
+
+/* ── Mode Auto ───────────────────────────────────────────────── */
+.trace-auto-actions { display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+.trace-btn-auto-multi {
+  display: flex; align-items: center; gap: 7px;
+  padding: 0.7rem 1.4rem; background: #1e293b; color: #fff;
+  border: none; border-radius: 10px; font-size: 0.85rem; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: opacity .15s;
+}
+.trace-btn-auto-multi:hover:not(:disabled) { opacity: .88; }
+.trace-btn-auto-multi:disabled { opacity: .45; cursor: not-allowed; }
+
+@keyframes spinTrace { to { transform: rotate(360deg); } }
+.trace-auto-spin {
+  display: inline-block; width: 14px; height: 14px; border-radius: 50%;
+  border: 2.5px solid rgba(255,255,255,.35); border-top-color: #fff;
+  animation: spinTrace .7s linear infinite; flex-shrink: 0;
+}
+
+.trace-auto-resultat { margin-top: 1.25rem; border-radius: 12px; padding: 14px 16px; border: 2px solid #e2e8f0; background: #f8fafc; }
+.trace-auto-resultat.nok { border-color: #fca5a5; background: #fff5f5; }
+.tar-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.tar-ico    { font-size: 1.2rem; }
+.tar-titre  { font-size: 0.85rem; font-weight: 700; color: #1e293b; }
+.trace-auto-resultat.nok .tar-titre { color: #dc2626; }
+.tar-score  { font-size: 0.88rem; color: #374151; margin-bottom: 8px; }
+.tar-score strong { font-size: 1.3rem; font-weight: 900; color: #1e293b; margin-left: 6px; }
+.trace-auto-resultat.nok .tar-score strong { color: #dc2626; }
+.tar-combis { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.tar-combi  { padding: 3px 10px; border-radius: 8px; font-size: 0.78rem; font-weight: 800; background: #f1f5f9; color: #1e293b; border: 1.5px solid #e2e8f0; }
+.tar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.tar-btn-publier {
+  padding: 7px 18px; background: #1e293b; color: #fff; border: none;
+  border-radius: 8px; font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: opacity .15s;
+}
+.tar-btn-publier:hover:not(:disabled) { opacity: .88; }
+.tar-btn-publier:disabled { opacity: .5; cursor: not-allowed; }
+.tar-btn-reessayer {
+  padding: 7px 14px; background: #fff; color: #1e293b;
+  border: 1.5px solid #1e293b; border-radius: 8px; font-size: 0.82rem;
+  font-weight: 700; cursor: pointer; font-family: inherit; transition: all .15s;
+}
+.tar-btn-reessayer:hover:not(:disabled) { background: #f1f5f9; }
+.tar-btn-reessayer:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ── Tuyaux (dots) ───────────────────────────────────────────── */
+.trace-tuyaux { display: flex; flex-direction: column; gap: 1px; margin-bottom: 0.75rem; }
+.trace-tuyaux-sep { height: 14px; flex-shrink: 0; }
+
+.trace-bloc-wrapper {
+  display: flex; align-items: center; gap: 10px;
+}
+.trace-bloc-lignes {
+  display: flex; flex-direction: column; gap: 1px; flex-shrink: 0;
+}
+.trace-bloc-restes {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: space-around;
+  border: none;
+  padding: 13px 8px; gap: 6px; min-width: 22px;
+  background: transparent;
+}
+.trace-reste-dots {
+  display: flex; align-items: center; gap: 2px;
+}
+.trace-dot-reste {
+  opacity: .35;
+}
+
+.trace-tuyau-ligne {
+  display: flex; align-items: center; gap: 8px; min-height: 28px;
+}
+.trace-tuyau-ligne.validated { opacity: .55; }
+
+.trace-tuyau-num {
+  font-size: .65rem; font-weight: 800; color: #64748b;
+  width: 26px; text-align: right; flex-shrink: 0;
+}
+
+.trace-dots-zone {
+  display: flex; align-items: center; flex-wrap: nowrap;
+  gap: 2px; min-height: 20px; flex-shrink: 0;
+}
+.trace-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #1e293b; flex-shrink: 0;
+  animation: dotPop .08s ease;
+}
+@keyframes dotPop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.trace-dot-barre {
+  position: relative; opacity: .35;
+}
+.trace-dot-barre::after {
+  content: ''; position: absolute;
+  top: 50%; left: -1px; right: -1px; height: 2px;
+  background: #1e293b; transform: translateY(-50%);
+}
+
+.trace-btn-valider-biffage {
+  padding: 7px 20px; background: #1e293b; color: #fff;
+  border: none; border-radius: 10px; font-size: .82rem; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: opacity .15s;
+}
+.trace-btn-valider-biffage:hover { opacity: .82; }
+
+.trace-tuyau-btn {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #1e293b; color: #fff; border: none;
+  font-size: .9rem; font-weight: 900; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; flex-grow: 0;
+  transition: transform .1s; line-height: 1;
+  min-width: 22px; min-height: 22px;
+}
+.trace-tuyau-btn:hover:not(:disabled) { transform: scale(1.15); }
+.trace-tuyau-btn:disabled { opacity: .2; cursor: not-allowed; }
+
+.trace-tuyau-btn-valider {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #fff; color: #1e293b;
+  border: 2px solid #1e293b; font-size: .8rem; font-weight: 900;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background .1s, transform .1s;
+}
+.trace-tuyau-btn-valider:hover { background: #f1f5f9; transform: scale(1.12); }
+
+.trace-tuyau-valide {
+  font-size: .65rem; font-weight: 700; color: #64748b;
+  flex-shrink: 0;
+}
+
+/* ── Grille 4×4 des points ───────────────────────────────────── */
+.trace-grille-points { display: flex; flex-direction: column; gap: 8px; margin-bottom: 0.5rem; }
+.trace-grille-ligne  { display: flex; align-items: center; gap: 8px; }
+.trace-ligne-label   { font-size: 0.7rem; font-weight: 700; color: #64748b; min-width: 44px; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.3px; }
+.trace-point-cellule { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.trace-point-input   { width: 100%; padding: 0.5rem 0.3rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.92rem; font-weight: 700; text-align: center; font-family: inherit; background: #fff; color: #1e293b; }
+.trace-point-input:focus  { outline: none; border-color: #1e293b; background: #fff; }
+.trace-point-input.erreur { border-color: #ef4444; background: #fff5f5; }
+.trace-point-cap   { font-size: 0.6rem; color: #94a3b8; font-weight: 600; }
+
+/* ── Étape 3 : page vierge + maisons à droite ───────────────── */
+.trace-e3-page {
+  background: #fff; min-height: 480px; border-radius: 16px;
+  position: relative; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 20px;
+}
+.trace-e3-layout {
+  display: grid;
+  grid-template-columns: repeat(7, 36px) 2px repeat(7, 36px);
+  grid-template-rows: repeat(4, auto);
+  gap: 24px 10px;
+  padding: 30px 20px;
+}
+.trace-e3-sep-v {
+  width: 1.5px; background: #1e293b;
+  justify-self: center; align-self: stretch;
+}
+.trace-e3-cell { display: flex; align-items: center; justify-content: center; }
+.trace-e3-box  { border: 1.5px solid #1e293b; border-radius: 6px; padding: 4px 6px; }
+.trace-e3-box.mc { border-color: #16a34a; }
+.trace-e3-maison {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 4px;
+  padding: 8px; background: transparent; border: none;
+}
+.trace-e3-rang {
+  display: flex; align-items: center; gap: 4px;
+}
+.trace-e3-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #1e293b; flex-shrink: 0;
+}
+.trace-e3-nav {
+  display: flex; gap: 32px; padding-left: 60px; align-items: center;
+}
+.trace-e4-analyse {
+  margin-top: 24px; padding: 16px 20px;
+  background: #fff; border-top: 1.5px solid #e2e8f0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* ── Grille des restes ───────────────────────────────────────── */
+.trace-restes-section { margin-bottom: 1rem; }
+.trace-restes-grille  { display: flex; flex-direction: column; gap: 6px; }
+.trace-restes-ligne   { display: flex; align-items: center; gap: 6px; }
+.trace-reste-cell     { flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; padding: 5px 4px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; border: 1.5px solid #e2e8f0; background: #f8fafc; }
+.trace-reste-cell.r1  { border-color: #cbd5e1; background: #f8fafc; }
+.trace-reste-cell.r2  { border-color: #cbd5e1; background: #f1f5f9; }
+.trc-orig   { color: #94a3b8; font-size: 0.72rem; }
+.trc-fleche { color: #c8c8c8; font-size: 0.65rem; }
+.trc-reste  { font-weight: 900; font-size: 0.95rem; color: #1e293b; }
+
+/* ── 4 premières maisons domicile ────────────────────────────── */
+.trace-premieres-maisons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 0.5rem; }
+.trace-pm-card   { border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; background: #fff; border-left-width: 4px; }
+.trace-pm-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.trace-pm-label  { font-size: 0.82rem; font-weight: 900; }
+.trace-pm-disp   { font-family: monospace; font-size: 0.72rem; color: #64748b; background: #e2e8f0; padding: 1px 5px; border-radius: 4px; }
+.trace-pm-zone   { font-size: 0.62rem; font-weight: 700; background: #f1f5f9; color: #475569; padding: 1px 6px; border-radius: 6px; margin-left: auto; }
+.trace-pm-body   { display: flex; flex-direction: column; gap: 3px; }
+.trace-pm-nom    { font-size: 0.78rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; display: inline-block; align-self: flex-start; }
+.trace-pm-sig    { font-size: 0.72rem; color: #64748b; font-style: italic; line-height: 1.4; }
+.trace-pm-inconnu{ font-size: 0.75rem; color: #94a3b8; }
+
+/* ── Grille 4×4 des 16 maisons ───────────────────────────────── */
+.trace-legende { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 0.75rem; }
+.tleg-item     { font-size: 0.62rem; font-weight: 600; padding: 2px 7px; border-radius: 6px; white-space: nowrap; }
+.trace-16-grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 1rem; }
+.trace-case-m {
+  border-radius: 9px; padding: 6px 4px; display: flex; flex-direction: column;
+  align-items: center; gap: 2px; cursor: default; transition: transform .1s;
+  border: 1px solid rgba(255,255,255,.3); min-height: 72px; justify-content: center;
+}
+.trace-case-m:hover { transform: scale(1.05); z-index: 1; box-shadow: 0 4px 12px rgba(0,0,0,.2); }
+.tcm-pos  { font-size: 0.58rem; opacity: .85; font-weight: 600; }
+.tcm-nom  { font-size: 0.66rem; font-weight: 700; text-align: center; line-height: 1.2; }
+.tcm-disp { font-size: 0.55rem; opacity: .8; font-family: monospace; }
+.tcm-star { font-size: 0.58rem; }
+
+/* ── Vérifications V1 + V2 ──────────────────────────────────── */
+.trace-verif    { display: flex; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.verif-bloc     { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 0.5rem 0.75rem; text-align: center; min-width: 90px; flex: 1; }
+.verif-bloc.ok  { border-color: #1e293b; background: #f8fafc; }
+.verif-bloc.nok { border-color: #fca5a5; background: #fff5f5; }
+.verif-bloc.info{ border-color: #e2e8f0; }
+.v-label        { display: block; font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 0.15rem; }
+.v-val          { display: block; font-size: 0.82rem; font-weight: 700; color: #1e293b; }
+
+/* ── Score dérivé ────────────────────────────────────────────── */
+.trace-score-derive {
+  display: flex; gap: 12px; align-items: stretch; margin-bottom: 1rem;
+  background: #fff; border-radius: 10px; border: 1.5px solid #e2e8f0; overflow: hidden;
+}
+.tsd-score-zone { text-align: center; padding: 0.9rem 1.2rem; background: #f8fafc; border-right: 1px solid #e2e8f0; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; }
+.trace-score-lbl { display: block; font-size: 0.68rem; color: #64748b; margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: .3px; }
+.trace-score-val { font-size: 2.2rem; font-weight: 900; color: #1e293b; }
+.tsd-detail { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 0.75rem 1rem; }
+.tsd-ligne { font-size: 0.78rem; font-weight: 600; padding: 3px 0; }
+.tsd-ligne.dom    { color: #1e293b; }
+.tsd-ligne.ext    { color: #475569; }
+.tsd-ligne.imsa   { color: #d97706; }
+.tsd-ligne.youssou{ color: #c62828; }
+.tsd-ligne.info   { color: #94a3b8; font-style: italic; }
+
+.trace-score-zone { text-align: center; margin-bottom: 1rem; background: #fff; border-radius: 10px; padding: 0.75rem; border: 1px solid #e2e8f0; }
+
+/* ── Alerte V1 non validée ───────────────────────────────────── */
+.trace-v1-alerte {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  background: #fff8e1; border: 1.5px solid #fde68a; border-radius: 10px;
+  padding: 10px 14px; margin-bottom: 1rem; font-size: 0.82rem; color: #92400e; line-height: 1.5;
+}
+.trace-v1-alerte span { flex: 1; }
+.trace-btn-regenerer {
+  flex-shrink: 0; padding: 7px 14px; background: #1e293b; color: #fff;
+  border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 700;
+  cursor: pointer; font-family: inherit; white-space: nowrap; transition: opacity .15s;
+}
+.trace-btn-regenerer:hover { opacity: .85; }
+
+/* ── Combinaisons ───────────────────────────────────────────── */
+.trace-combis-section { margin-bottom: 1rem; }
+.trace-combis-titre   { font-size: 0.78rem; font-weight: 700; color: #374151; display: block; margin-bottom: 0.5rem; }
+.trace-combis { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.combi-tag    { padding: 0.3rem 0.75rem; border-radius: 20px; border: 1.5px solid; font-size: 0.78rem; font-weight: 600; }
+.combi-finale { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.9rem; border-radius: 10px; margin-bottom: 0.5rem; }
+.combi-finale-label { font-size: 1.1rem; font-weight: 900; min-width: 50px; }
+.combi-finale-desc  { font-size: 0.85rem; color: #374151; font-weight: 500; }
+
+/* ── Interprétation ─────────────────────────────────────────── */
+.trace-interpretation { background: #fff; border-left: 4px solid #1e293b; border-radius: 8px; padding: 0.9rem 1rem; margin-bottom: 1rem; }
+.trace-interp-titre   { font-size: 0.78rem; font-weight: 700; color: #1e293b; display: block; margin-bottom: 0.5rem; }
+.trace-interp-texte   { display: flex; flex-direction: column; gap: 0.35rem; }
+.trace-interp-ligne   { font-size: 0.82rem; color: #374151; margin: 0; line-height: 1.5; }
+
+/* ── Grille 4×4 maisons ─────────────────────────────────────── */
+.trace-maisons-section { margin-bottom: 1rem; }
+.trace-maisons-titre   { font-size: 0.78rem; font-weight: 700; color: #374151; display: block; margin-bottom: 0.5rem; }
+.maisons-grille-4x4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.case-maison        { border-radius: 8px; padding: 5px 3px; display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: default; transition: transform .1s; border: 1px solid rgba(255,255,255,.3); min-height: 68px; justify-content: center; }
+.case-maison:hover  { transform: scale(1.06); z-index: 1; box-shadow: 0 4px 12px rgba(0,0,0,.2); }
+.case-pos-num       { font-size: 0.58rem; opacity: .85; font-weight: 600; }
+.case-nom-maison    { font-size: 0.65rem; font-weight: 700; text-align: center; line-height: 1.2; }
+.case-disposition   { font-size: 0.55rem; opacity: .8; font-family: monospace; }
+.case-star          { font-size: 0.58rem; }
+
+/* ── Boutons secondaires ─────────────────────────────────────── */
+.btn-generer-trace {
+  width: 100%; padding: 0.85rem; border: none; border-radius: 12px;
+  font-size: 1rem; font-weight: 800; cursor: pointer; margin: 0.75rem 0;
+  background: #1e293b; color: #fff;
+  box-shadow: 0 4px 14px rgba(15,23,42,.2);
+  transition: opacity .15s, transform .1s;
+}
+.btn-generer-trace:hover    { opacity: .88; transform: translateY(-1px); }
+.btn-generer-trace:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+
+/* ── Message retour ─────────────────────────────────────────── */
+.trace-msg-save       { padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; margin-top: 0.5rem; }
+.trace-msg-save.ok    { background: #f0fdf4; color: #166534; }
+.trace-msg-save.erreur{ background: #ffebee; color: #c62828; }
+.trace-msg-save.warn  { background: #fff8e1; color: #92400e; }
+
+/* ── Avertissement ───────────────────────────────────────────── */
+.trace-avertissement { background: #fff8e1; border: 1px solid #fde68a; border-radius: 10px; padding: 0.75rem 1rem; margin-top: 0.75rem; font-size: 0.82rem; color: #854d0e; }
+.btn-regenrer-petit  { display: inline-block; margin-top: 0.5rem; padding: 0.38rem 0.9rem; background: #1e293b; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.78rem; font-weight: 600; }
+
+/* ── Formulaire match ────────────────────────────────────────── */
+.trace-match-form  { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
+.trace-form-titre  { font-size: 0.82rem; font-weight: 700; color: #1e293b; margin: 0 0 0.65rem; }
+.trace-form-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.trace-form-input  { padding: 0.5rem 0.75rem; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.85rem; background: #fff; color: #1e293b; }
+.trace-form-input:focus    { outline: none; border-color: #1e293b; }
+.trace-form-input:disabled { background: #f8fafc; color: #94a3b8; }
+
+/* ── Concordance ─────────────────────────────────────────────── */
+.trace-concordance     { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; border-radius: 14px; margin-bottom: 1rem; border: 2px solid; }
+.trace-concordance.ok  { background: #f8fafc; border-color: #1e293b; }
+.trace-concordance.nok { background: #fff7ed; border-color: #f97316; }
+.conc-icone   { font-size: 1.8rem; flex-shrink: 0; }
+.conc-texte   { flex: 1; }
+.conc-texte strong { font-size: 0.95rem; color: #1e293b; display: block; margin-bottom: 0.4rem; }
+.conc-texte p      { font-size: 0.82rem; color: #374151; margin: 0.2rem 0; }
+.conc-fiabilite    { color: #1e293b !important; font-style: italic; }
+.conc-action       { color: #c2410c !important; }
+.btn-recommencer   { margin-top: 0.75rem; padding: 0.5rem 1.25rem; background: #1e293b; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
+
+/* ── Blocs de résultat ───────────────────────────────────────── */
+.trace-resultat     { border-radius: 14px; padding: 1.25rem; margin-bottom: 1rem; border: 2px solid #e2e8f0; }
+.trace-bloc-header  { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.trace-bloc-titre   { font-weight: 800; font-size: 1rem; color: #1e293b; }
+.trace-bloc-badge   { padding: 0.2rem 0.65rem; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
+.trace-bloc-badge.ok  { background: #f1f5f9; color: #1e293b; }
+.trace-bloc-badge.nok { background: #fef9c3; color: #854d0e; }

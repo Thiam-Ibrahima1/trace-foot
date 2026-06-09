@@ -1,0 +1,425 @@
+/* PageVIPAdmin.css */
+.page-vip-admin {
+  padding: 16px 20px 20px;
+  display: flex; flex-direction: column;
+  height: 100%; min-height: 0;
+}
+
+/* Quand l'onglet Prédictions est actif : pleine hauteur sans scroll */
+.page-vip-admin:has(.vipa-pred-fixe) {
+  padding: 0; overflow: hidden;
+}
+
+/* Onglet prédictions : formulaire centré, pleine hauteur, fixe */
+.vipa-pred-fixe {
+  flex: 1; display: flex; flex-direction: column;
+  overflow: hidden; min-height: 0;
+}
+
+/* En-tête VIP (titre + onglets) reste visible dans tous les onglets */
+.page-vip-admin:has(.vipa-pred-fixe) .vipa-header {
+  padding: 16px 24px 0; flex-shrink: 0;
+}
+
+/* Zone formulaire : prend tout l'espace restant, centrée */
+.vipa-pred-fixe > form {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 16px 24px 24px;
+  overflow: hidden;
+}
+
+.vipa-form-fixe {
+  width: 100%; max-width: 580px; margin: 0 auto;
+}
+
+/* ══ LIGNE DE SCORE COMMUNE (Prédictions + Historique) ═══ */
+.vipa-ligne {
+  padding: 10px 14px; border-bottom: 1px solid #f5f5f5;
+  display: flex; flex-direction: column; gap: 7px;
+}
+.vipa-ligne:last-child { border-bottom: none; }
+.vipa-ligne.correct   { border-left: 3px solid #16a34a; background: #f9fff9; }
+.vipa-ligne.incorrect { border-left: 3px solid #ef4444; background: #fff9f9; }
+
+.vipa-ligne-match   { display: flex; flex-direction: column; gap: 3px; }
+.vipa-ligne-equipes { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.vipa-ligne-dom, .vipa-ligne-ext { font-size: 0.86rem; font-weight: 700; color: #1e293b; }
+.vipa-ligne-vs      { font-size: 0.72rem; color: #94a3b8; }
+.vipa-eq-mini       { width: 18px; height: 18px; object-fit: contain; flex-shrink: 0; }
+.vipa-ligne-meta    { display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: #94a3b8; }
+.vipa-publie-badge  { font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 8px; }
+.vipa-publie-badge.ok  { background: #dcfce7; color: #15803d; }
+.vipa-publie-badge.nok { background: #f1f5f9; color: #64748b; }
+
+.vipa-ligne-scores { display: flex; gap: 14px; align-items: center; }
+
+/* Paiements — heure dans le nom du match */
+.pai-heure { color: #94a3b8; font-size: 0.75rem; }
+.pai-match  { font-size: 0.86rem; font-weight: 700; color: #1e293b; }
+.pai-user   { font-size: 0.75rem; color: #64748b; }
+.pai-recu   { font-size: 0.65rem; color: #b0bec5; letter-spacing: .2px; }
+
+/* ══ HISTORIQUE DES SCORES EXACTS ══════════════════════════ */
+.vipa-historique { }
+
+.vipa-histo-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0 14px; margin-bottom: 4px;
+}
+.vipa-histo-titre { font-size: 0.95rem; font-weight: 700; color: #1e3a5f; flex: 1; }
+.vipa-histo-nb    { font-size: 0.72rem; font-weight: 700; background: #e8f5e9;
+  color: #1b5e20; padding: 3px 10px; border-radius: 10px; }
+
+/* Section par date dans l'Historique */
+.vipa-histo-date-section { margin-bottom: 16px; }
+.vipa-histo-date-header  {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 12px; background: #1b5e20; border-radius: 10px 10px 0 0;
+  margin-bottom: 0;
+}
+.vipa-histo-date-lbl {
+  font-size: 0.82rem; font-weight: 700; color: #fff; text-transform: capitalize;
+}
+.vipa-histo-date-section .vipa-histo-nb {
+  background: rgba(255,255,255,.2); color: #fff;
+}
+
+/* Bloc par championnat */
+.vipa-histo-champ { margin-bottom: 12px; background: #fff;
+  border-radius: 12px; overflow: hidden; box-shadow: 0 1px 5px rgba(0,0,0,.07); }
+
+.vipa-histo-champ-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 14px; background: #f8faf8; border-bottom: 1px solid #e8f5e9;
+}
+.vipa-histo-champ-nom { flex: 1; font-size: 0.82rem; font-weight: 700; color: #1b5e20;
+  text-transform: uppercase; letter-spacing: .4px; }
+.vipa-histo-champ-nb  { font-size: 0.68rem; font-weight: 800; background: #e8f5e9;
+  color: #2e7d32; padding: 2px 8px; border-radius: 10px; }
+
+/* Ligne score */
+.vipa-histo-ligne {
+  padding: 10px 14px; border-bottom: 1px solid #f5f5f5;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.vipa-histo-ligne:last-child { border-bottom: none; }
+.vipa-histo-ligne.correct  { border-left: 3px solid #16a34a; background: #f9fff9; }
+.vipa-histo-ligne.incorrect{ border-left: 3px solid #ef4444; background: #fff9f9; }
+
+.vipa-histo-match   { display: flex; flex-direction: column; gap: 2px; }
+.vipa-histo-equipes { font-size: 0.88rem; font-weight: 700; color: #1e293b; }
+.vipa-histo-vs      { font-weight: 400; color: #94a3b8; margin: 0 4px; }
+.vipa-histo-date    { font-size: 0.72rem; color: #94a3b8; }
+
+.vipa-histo-scores      { display: flex; gap: 12px; align-items: center; }
+.vipa-histo-score-bloc  { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.vipa-histo-slbl        { font-size: 0.6rem; color: #94a3b8; text-transform: uppercase; }
+.vipa-histo-sval        { font-size: 1rem; font-weight: 900; }
+.vipa-histo-sval.predit  { color: #1b5e20; }
+.vipa-histo-sval.correct { color: #15803d; }
+.vipa-histo-sval.incorrect{ color: #dc2626; }
+
+/* Boutons Modifier / Supprimer */
+.vipa-histo-btns {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.vipa-btn-modifier {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 12px; background: #f0fdf4; color: #1b5e20;
+  border: 1.5px solid #c8e6c9; border-radius: 7px;
+  font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: all .15s;
+}
+.vipa-btn-modifier:hover { background: #dcfce7; border-color: #4ade80; }
+
+.vipa-btn-supprimer {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 12px; background: #fff5f5; color: #dc2626;
+  border: 1.5px solid #fca5a5; border-radius: 7px;
+  font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: all .15s;
+}
+.vipa-btn-supprimer:hover { background: #fee2e2; border-color: #ef4444; }
+
+/* Formulaire modification inline */
+.vipa-histo-edit {
+  display: flex; gap: 6px; align-items: center;
+}
+.vipa-btn-annuler-edit {
+  padding: 5px 10px; background: #f1f5f9; color: #64748b;
+  border: none; border-radius: 6px; font-size: 0.8rem; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+}
+
+/* Confirmation suppression */
+.vipa-histo-suppr-conf {
+  display: flex; align-items: center; gap: 8px;
+  background: #fff5f5; padding: 8px 12px; border-radius: 8px;
+  font-size: 0.8rem; color: #dc2626; font-weight: 600;
+}
+.vipa-conf-oui {
+  padding: 4px 12px; background: #dc2626; color: #fff; border: none;
+  border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.vipa-conf-non {
+  padding: 4px 12px; background: #f1f5f9; color: #64748b; border: none;
+  border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit;
+}
+/* ══ EN-TÊTE (titre + onglets) ══════════════════════════════ */
+.vipa-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+}
+.vipa-titre { font-size: 1.15rem; font-weight: 800; color: #0f172a; }
+.vipa-onglets {
+  display: flex; gap: 0;
+  background: #f1f5f9; border-radius: 12px; padding: 3px; border: none;
+}
+.vipa-onglet {
+  padding: 8px 18px; background: transparent; border: none;
+  font-size: 0.82rem; font-weight: 600; color: #64748b;
+  cursor: pointer; border-radius: 10px;
+  transition: all .18s; font-family: inherit;
+}
+.vipa-onglet.actif {
+  background: #fff; color: #1b5e20;
+  box-shadow: 0 2px 8px rgba(0,0,0,.10);
+}
+.vipa-onglet:not(.actif):hover { color: #1b5e20; background: rgba(255,255,255,.6); }
+
+/* ══ BARRE DE DATE ══════════════════════════════════════════ */
+.vipa-date-bar {
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+  border-radius: 12px; padding: 10px 16px; margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(27,94,32,.22);
+}
+.vipa-date-lbl {
+  font-size: 0.72rem; font-weight: 700;
+  color: rgba(255,255,255,.75);
+  text-transform: uppercase; letter-spacing: .6px; flex-shrink: 0;
+}
+.vipa-date-input {
+  padding: 7px 12px; border: none; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 700; font-family: inherit;
+  background: rgba(255,255,255,.95); color: #1b5e20;
+  cursor: pointer; outline: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,.10); transition: box-shadow .15s;
+}
+.vipa-date-input:focus { box-shadow: 0 0 0 3px rgba(255,255,255,.4); }
+
+/* ══ FORMULAIRE ══════════════════════════════════════════════ */
+.vipa-form {
+  background: #fff; border-radius: 14px; padding: 16px 20px;
+  margin-bottom: 0;
+  box-shadow: 0 2px 14px rgba(0,0,0,.07);
+  border: 1px solid #f0f4f0;
+}
+.vipa-form-titre {
+  font-size: 0.92rem; font-weight: 800; margin-bottom: 8px; color: #0f172a;
+}
+.vipa-form-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* Formulaire fixe : espacements réduits pour tenir dans l'écran */
+.vipa-form-fixe { padding: 14px 18px !important; }
+.vipa-form-fixe .vipa-form-titre { margin-bottom: 10px; }
+.vipa-form-fixe .vipa-form-grille { gap: 7px; }
+.vipa-form-fixe .vipa-input { padding: 6px 10px; font-size: .82rem; }
+.vipa-form-fixe .vipa-form-actions { margin-top: 10px; }
+
+.vipa-field { display: flex; flex-direction: column; gap: 4px; }
+.vipa-label {
+  font-size: 0.67rem; color: #64748b; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.vipa-input {
+  padding: 8px 11px; border: 1.5px solid #e2e8f0; border-radius: 9px;
+  font-size: 0.84rem; font-family: inherit; background: #fafafa;
+  transition: border-color .15s, box-shadow .15s; color: #1e293b;
+}
+.vipa-input:focus {
+  outline: none; background: #fff;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46,125,50,.1);
+}
+.vipa-input::placeholder { color: #cbd5e1; }
+
+.vipa-msg.ok     {
+  color: #15803d; background: #f0fdf4;
+  border: 1px solid #bbf7d0; border-radius: 9px;
+  padding: 8px 12px; font-size: 0.82rem; font-weight: 600; margin: 8px 0;
+}
+.vipa-msg.erreur {
+  color: #dc2626; background: #fef2f2;
+  border: 1px solid #fecaca; border-radius: 9px;
+  padding: 8px 12px; font-size: 0.82rem; font-weight: 600; margin: 8px 0;
+}
+
+.vipa-form-note {
+  font-size: 0.76rem; color: #475569; background: #f0fdf4;
+  border: 1px solid #bbf7d0; border-radius: 9px; padding: 8px 12px;
+  margin-bottom: 12px; line-height: 1.45;
+}
+.vipa-form-note strong { color: #15803d; }
+
+.vipa-form-actions { display: flex; gap: 10px; align-items: center; margin-top: 14px; }
+
+.vipa-btn-save {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: #fff; border: none; border-radius: 9px;
+  font-size: 0.86rem; font-weight: 700; cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 12px rgba(27,94,32,.3); transition: all .18s;
+}
+.vipa-btn-save:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(27,94,32,.4); }
+.vipa-btn-save:active { transform: translateY(0); }
+
+.vipa-btn-voir-histo {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 16px; background: #f0fdf4; color: #1b5e20;
+  border: 1.5px solid #86efac; border-radius: 9px;
+  font-size: 0.83rem; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: all .15s;
+}
+.vipa-btn-voir-histo:hover { background: #dcfce7; border-color: #4ade80; }
+
+.vipa-vide { text-align: center; padding: 20px; color: #94a3b8; font-size: 0.86rem; }
+
+/* Case à cocher */
+.vipa-field-check { grid-column: 1 / -1; }
+.vipa-label-check {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.84rem; color: #1e293b; font-weight: 600; cursor: pointer;
+  background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 9px;
+  padding: 10px 14px; transition: all .15s;
+}
+.vipa-label-check:hover { border-color: #86efac; background: #f0fdf4; }
+.vipa-label-check input[type="checkbox"] {
+  width: 16px; height: 16px; accent-color: #1b5e20; cursor: pointer; flex-shrink: 0;
+}
+.vipa-card { background: #fff; border: .5px solid #e5e5e5; border-radius: 8px; padding: 12px; margin-bottom: 8px; }
+.vipa-card-top { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.vipa-match  { font-size: 13px; font-weight: 500; }
+.vipa-publie.ok  { font-size: 11px; padding: 2px 8px; background: #dcfce7; color: #16a34a; border-radius: 20px; }
+.vipa-publie.nok { font-size: 11px; padding: 2px 8px; background: #fee2e2; color: #dc2626; border-radius: 20px; }
+.vipa-card-bottom { display: flex; gap: 12px; align-items: center; }
+.vipa-heure { font-size: 12px; color: #888; }
+.vipa-score { font-size: 16px; font-weight: 700; color: #1a1a1a; }
+.vipa-reel.vert  { font-size: 12px; color: #16a34a; font-weight: 500; }
+.vipa-reel.rouge { font-size: 12px; color: #dc2626; }
+.vipa-stats-pai { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.vipa-stat { background: #f8f8f6; border-radius: 8px; padding: 12px; text-align: center; }
+.vipa-stat.vert { background: #dcfce7; }
+.vs-val { display: block; font-size: 20px; font-weight: 700; } .vs-lbl { display: block; font-size: 11px; color: #888; margin-top: 2px; }
+/* ── Section par championnat (Paiements) ─────────────────────── */
+.pai-champ-section {
+  margin-bottom: 14px; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+.pai-champ-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+}
+.pai-champ-nom  { flex: 1; font-size: 0.82rem; font-weight: 800; color: #fff;
+  text-transform: uppercase; letter-spacing: .4px; }
+.pai-champ-nb   { font-size: 0.68rem; font-weight: 700;
+  background: rgba(255,255,255,.2); color: #fff; padding: 2px 8px; border-radius: 8px; }
+.pai-champ-ca   { font-size: 0.72rem; font-weight: 800; color: #a7f3d0;
+  background: rgba(0,0,0,.2); padding: 2px 8px; border-radius: 8px; white-space: nowrap; }
+
+.pai-champ-section .pai-row { border-radius: 0; margin-bottom: 0;
+  border-bottom: 1px solid #f0f0f0; }
+.pai-champ-section .pai-row:last-child { border-bottom: none; }
+
+.pai-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 12px; background: #f8f8f6; border-radius: 6px; margin-bottom: 6px; gap: 10px; }
+.pai-info { display: flex; flex-direction: column; gap: 3px; }
+.pai-info-ligne {
+  display: flex; align-items: center; gap: 6px;
+  width: 100%;
+}
+.pai-info-lbl {
+  font-size: 0.68rem; font-weight: 700; color: #64748b;
+  white-space: nowrap; flex-shrink: 0;
+}
+.pai-info-val {
+  font-size: 0.75rem; color: #1e293b; font-weight: 500;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pai-info-val.mono {
+  font-family: monospace; font-size: 0.72rem; color: #475569;
+  background: #f1f5f9; padding: 1px 5px; border-radius: 4px;
+}
+.pai-user    { font-size: 12px; font-weight: 500; } .pai-match { font-size: 11px; color: #555; } .pai-methode { font-size: 10px; color: #aaa; }
+.pai-droite  { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.pai-statut { font-size: 10px; padding: 2px 8px; border-radius: 20px; }
+.pai-statut.valide     { background: #dcfce7; color: #16a34a; }
+.pai-statut.en_attente { background: #fefce8; color: #ca8a04; }
+.pai-statut.echec      { background: #fee2e2; color: #dc2626; }
+.pai-montant { font-size: 12px; font-weight: 600; }
+@media(max-width:480px){ .vipa-form-grille{grid-template-columns:1fr;} }
+
+/* ── Prédictions : liste + compteur ────────────────────────── */
+.vipa-date-nb { font-size: .68rem; font-weight: 700; color: rgba(255,255,255,.7); margin-left: auto; }
+.vipa-pred-liste { background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; }
+.vipa-pred-liste-titre {
+  font-size: .65rem; font-weight: 800; color: #64748b;
+  text-transform: uppercase; letter-spacing: .5px;
+  padding: 8px 14px; background: #f8fafc; border-bottom: 1px solid #e2e8f0;
+}
+
+/* ── Paiements : top (stats + filtre) ───────────────────────── */
+.vipa-pai-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap; margin-bottom: 12px;
+}
+.vipa-pai-top .vipa-stats-pai { flex: 1; min-width: 180px; margin-bottom: 0; }
+.vipa-pai-filtre {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  border-radius: 10px; padding: 8px 12px;
+}
+.vipa-pai-reset {
+  font-size: .7rem; font-weight: 700; color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+  border-radius: 6px; padding: 4px 10px; cursor: pointer; font-family: inherit;
+}
+.vipa-pai-reset:hover { background: rgba(255,255,255,.25); }
+
+/* ── Paiements : section par match ─────────────────────────── */
+.pai-match-section {
+  margin-bottom: 14px; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+.pai-match-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #1e3a5f, #1565c0);
+}
+.pai-match-hdr-info { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+.pai-match-hdr-comp  { font-size: .6rem; font-weight: 700; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .4px; }
+.pai-match-hdr-equipes { font-size: .82rem; font-weight: 800; color: #fff; }
+.pai-match-hdr-equipes .pai-vs { color: rgba(255,255,255,.5); margin: 0 5px; font-weight: 400; }
+.pai-match-hdr-date { font-size: .65rem; color: rgba(255,255,255,.55); }
+.pai-match-hdr-resume { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.pai-match-section .pai-row { background: #f8fafc; border-bottom: 1px solid #f0f0f0; border-radius: 0; margin-bottom: 0; }
+.pai-match-section .pai-row:last-child { border-bottom: none; }
+.mono { font-family: monospace; font-size: .72rem; color: #475569; background: #f1f5f9; padding: 1px 5px; border-radius: 4px; }
+
+/* ── Correction de score VIP (POINT 5) ──────────────────────── */
+.vipa-correction   { margin-top: 0.6rem; border-top: 1px solid #f0fdf4; padding-top: 0.6rem;
+  display: flex; flex-direction: column; gap: 0.35rem; }
+.vipa-corr-ligne   { display: flex; gap: 0.4rem; }
+.vipa-corr-input   { flex: 1; padding: 0.4rem 0.65rem; border: 1.5px solid #c8e6c9;
+  border-radius: 8px; font-size: 0.82rem; }
+.vipa-corr-input:focus { outline: none; border-color: #2e7d32; }
+.vipa-corr-btn     { padding: 0.4rem 0.8rem; background: #2e7d32; color: #fff;
+  border: none; border-radius: 8px; cursor: pointer; font-size: 0.78rem; font-weight: 700;
+  white-space: nowrap; }
+.vipa-corr-raison  { width: 100%; padding: 0.38rem 0.65rem; border: 1.5px solid #fde68a;
+  border-radius: 8px; font-size: 0.75rem; color: #64748b; }
+.vipa-corr-msg     { font-size: 0.75rem; padding: 0.3rem 0.5rem; border-radius: 6px; }
+.vipa-corr-msg.ok  { background: #e8f5e9; color: #2e7d32; }
+.vipa-corr-msg.erreur { background: #ffebee; color: #c62828; }

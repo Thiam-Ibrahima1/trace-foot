@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+// artisan — Point d'entrée des commandes Laravel
+// Usage : php artisan <commande> [options]
+// Exemples :
+//   php artisan migrate              → créer les tables
+//   php artisan serve                → démarrer le serveur
+//   php artisan trace:mise-a-jour    → mettre à jour les scores
+//   php artisan route:list --path=api → voir les routes
+
+define('LARAVEL_START', microtime(true));
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = require_once __DIR__ . '/bootstrap/app.php';
+
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+$status = $kernel->handle(
+    $input  = new Symfony\Component\Console\Input\ArgvInput,
+    new Symfony\Component\Console\Output\ConsoleOutput
+);
+
+$kernel->terminate($input, $status);
+exit($status);

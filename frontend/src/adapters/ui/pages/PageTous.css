@@ -1,0 +1,176 @@
+/* PageTous.css — Matchs groupés par pays */
+.page-tous { background:#f5f5f5; min-height:100vh; padding-bottom:75px; }
+
+/* ── Barre de dates ───────────────────────────────────────── */
+.pt-dates-wrap {
+  position:sticky; top:52px; z-index:20;
+  background:#fff; border-bottom:1px solid #e8f5e9;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  display:flex; align-items:center;
+}
+.pt-dates {
+  display:flex; gap:4px; overflow-x:auto;
+  padding:10px 12px; scrollbar-width:none; flex:1;
+  -webkit-overflow-scrolling:touch;
+}
+.pt-dates::-webkit-scrollbar { display:none; }
+
+.pt-date-btn {
+  flex-shrink:0; display:flex; flex-direction:column;
+  align-items:center; gap:1px; padding:6px 11px;
+  background:none; border:1.5px solid #e2e8f0; border-radius:12px;
+  cursor:pointer; transition:all .15s; position:relative; min-width:50px;
+}
+.pt-date-btn:hover { border-color:#2e7d32; }
+.pt-date-btn.actif { background:#2e7d32; border-color:#2e7d32; color:#fff; }
+.pt-date-btn.avec-matchs { border-color:#c8e6c9; }
+.pt-date-abbr { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.3px; }
+.pt-date-num  { font-size:.72rem; font-weight:600; }
+.pt-date-dot  { width:4px; height:4px; border-radius:50%; background:#2e7d32; position:absolute; bottom:4px; }
+.pt-date-point-vert { width:4px; height:4px; border-radius:50%; background:#c8e6c9; position:absolute; bottom:4px; }
+
+.pt-btn-actualiser {
+  flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  width:36px; height:36px; margin:0 10px;
+  background:none; border:1.5px solid #e2e8f0; border-radius:8px;
+  cursor:pointer; color:#64748b; transition:border-color .15s,color .15s;
+}
+.pt-btn-actualiser:hover:not(:disabled) { border-color:#2e7d32; color:#2e7d32; }
+.pt-btn-actualiser:disabled { opacity:.5; cursor:not-allowed; }
+
+/* ── Ligne "Tous les matchs" ──────────────────────────────── */
+.pt-tous-ligne {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px; background:#fff; border-bottom:1px solid #f0f0f0;
+}
+.pt-tous-ico { width:18px; height:18px; color:#64748b; flex-shrink:0; }
+.pt-tous-label { flex:1; font-size:.88rem; font-weight:700; color:#1e293b; }
+.pt-badge-live { background:#ef4444; color:#fff; font-size:.68rem; font-weight:700; padding:2px 7px; border-radius:10px; flex-shrink:0; }
+.pt-badge-total { font-size:.82rem; font-weight:600; color:#64748b; flex-shrink:0; }
+.pt-pred-charg { font-size:.75rem; opacity:.6; animation:pt-pulse 1s ease-in-out infinite; }
+@keyframes pt-pulse { 0%,100%{opacity:.4} 50%{opacity:.8} }
+
+/* ── Skeleton ─────────────────────────────────────────────── */
+.pt-skeletons { padding:8px 0; }
+.pt-skeleton-bloc { background:#fff; border-bottom:6px solid #f5f5f5; }
+@keyframes pt-shimmer { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+.pt-skeleton-header,.pt-skeleton-match {
+  background:linear-gradient(90deg,#f0f0f0 25%,#e8e8e8 50%,#f0f0f0 75%);
+  background-size:400px 100%; animation:pt-shimmer 1.4s ease infinite; border-radius:6px;
+}
+.pt-skeleton-header { height:54px; border-radius:0; }
+.pt-skeleton-match  { height:52px; margin:8px 14px; width:95%; }
+
+/* ── États ────────────────────────────────────────────────── */
+.pt-erreur {
+  margin:14px; padding:12px 16px; background:#fffbeb; color:#92400e;
+  border-radius:10px; font-size:.85rem; border-left:3px solid #f59e0b;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  line-height:1.5;
+}
+.pt-btn-retry { background:#dc2626; color:#fff; border:none; border-radius:6px; padding:4px 10px; font-size:.75rem; font-weight:600; cursor:pointer; font-family:inherit; white-space:nowrap; flex-shrink:0; }
+.pt-vide { display:flex; flex-direction:column; align-items:center; padding:56px 20px; color:#94a3b8; text-align:center; gap:4px; }
+.pt-vide p { font-size:.95rem; font-weight:600; color:#64748b; margin:0 0 8px; }
+.pt-btn-retry-vide { display:flex; align-items:center; gap:6px; margin-top:8px; padding:8px 16px; background:#2e7d32; color:#fff; border:none; border-radius:8px; font-size:.82rem; font-weight:600; cursor:pointer; font-family:inherit; }
+
+/* Badge live mini (partagé) */
+.pt-badge-live-mini { background:#ef4444; color:#fff; font-size:.62rem; font-weight:700; padding:1px 6px; border-radius:8px; }
+
+/* ── Accordéon COMPÉTITION ────────────────────────────────── */
+
+/* Bloc d'une compétition */
+.pt-champ-bloc {
+  background:#fff;
+  border-bottom:6px solid #f5f5f5;
+}
+
+/* En-tête cliquable de la compétition */
+.pt-champ-header {
+  display:flex; align-items:center; gap:12px; width:100%;
+  padding:13px 14px; background:none; border:none;
+  border-left:3px solid transparent; cursor:pointer;
+  text-align:left; font-family:inherit;
+  transition:background .12s, border-color .15s;
+}
+.pt-champ-header:hover  { background:#f8faf8; }
+.pt-champ-header.ouvert { border-left-color:#2e7d32; background:#f0fdf4; }
+
+/* Conteneur du drapeau (image ou emoji) */
+.pt-champ-flag-wrap {
+  width:36px; height:24px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* Image drapeau réelle */
+.pt-champ-flag-img {
+  width:36px; height:24px; object-fit:cover;
+  border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,.15); flex-shrink:0;
+}
+
+/* Emoji fallback — même boîte que l'image (36×24px) */
+.pt-champ-drapeau {
+  width:36px; height:24px; font-size:1.1rem;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; background:#f1f5f9; border-radius:3px; line-height:1;
+}
+
+/* Infos texte : pays (petit) + nom compétition */
+.pt-champ-infos {
+  flex:1; display:flex; flex-direction:column; gap:2px; min-width:0;
+}
+.pt-champ-pays {
+  font-size:.62rem; font-weight:600; color:#94a3b8;
+  text-transform:uppercase; letter-spacing:.4px;
+}
+.pt-champ-nom {
+  font-size:.9rem; font-weight:700; color:#1e293b;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* Zone droite : badges + nombre + chevron */
+.pt-champ-droite {
+  display:flex; align-items:center; gap:8px; flex-shrink:0;
+}
+.pt-champ-count {
+  font-size:.82rem; font-weight:600; color:#64748b;
+  min-width:14px; text-align:right;
+}
+.pt-champ-chevron {
+  color:#cbd5e1; display:flex; align-items:center;
+}
+
+/* Liste des matchs d'une compétition */
+.pt-matchs-liste {
+  border-top:1px solid #f0fdf4;
+}
+
+/* ── Carte match ──────────────────────────────────────────── */
+.pt-match {
+  display:flex; align-items:center; gap:8px; padding:10px 14px;
+  border-bottom:1px solid #f8faf8; background:#fff; transition:background .1s;
+}
+.pt-match:last-child { border-bottom:none; }
+.pt-match:hover { background:#f8faf8; }
+.pt-match.en-cours { background:#f0fdf4; border-left:2px solid #16a34a; }
+.pt-match.termine { opacity:.9; }
+
+.pt-m-heure { min-width:40px; display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+.pt-heure-tag { font-size:.8rem; font-weight:700; color:#334155; }
+.pt-live-tag { display:flex; align-items:center; gap:3px; font-size:.7rem; font-weight:800; color:#16a34a; }
+.pt-fin-tag  { font-size:.7rem; font-weight:700; color:#94a3b8; }
+.pt-mt-tag   { font-size:.6rem; font-weight:700; color:#f59e0b; margin-top:1px; }
+
+.pt-m-corps { flex:1; display:flex; flex-direction:column; gap:5px; min-width:0; }
+.pt-m-equipe { display:flex; align-items:center; gap:7px; }
+.pt-m-logo   { width:18px; height:18px; object-fit:contain; flex-shrink:0; }
+.pt-m-logo-ph { font-size:.85rem; width:18px; text-align:center; flex-shrink:0; }
+.pt-m-nom    { flex:1; font-size:.83rem; font-weight:600; color:#1e293b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.pt-m-score  { font-size:.95rem; font-weight:800; color:#334155; min-width:18px; text-align:right; flex-shrink:0; margin-left:auto; }
+.pt-m-score.live { color:#16a34a; }
+
+.pt-m-combis { display:flex; flex-direction:column; gap:3px; align-items:flex-end; flex-shrink:0; }
+.pt-combi         { display:flex; align-items:center; gap:3px; font-size:.65rem; font-weight:700; padding:2px 6px; border-radius:6px; border:1.5px solid; white-space:nowrap; transition:all .2s; }
+.pt-combi.pending { border-color:#fde68a; color:#92400e; background:#fef9c3; }
+.pt-combi.ok      { border-color:#16a34a; color:#16a34a; background:#f0fdf4; }
+.pt-combi.nok     { border-color:#ef4444; color:#ef4444; background:#fff5f5; }
+@keyframes pt-spin { to { transform:rotate(360deg); } }

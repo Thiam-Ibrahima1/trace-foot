@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php -l app/Http/Controllers/MatchController.php)",
+      "Bash(php artisan *)"
+    ]
+  }
+}

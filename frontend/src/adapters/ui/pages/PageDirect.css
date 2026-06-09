@@ -1,0 +1,207 @@
+/* PageDirect.css — Matchs en direct, thème clair */
+.page-direct {
+  background: #f1f5f9;
+  min-height: 100%;
+  color: #1e293b;
+}
+
+/* ── En-tête ──────────────────────────────────────────────────── */
+.pd-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px 10px;
+  background: #fff;
+  border-bottom: 2px solid #dc2626;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  position: sticky; top: 0; z-index: 10;
+}
+.pd-header-gauche { display: flex; align-items: center; gap: 9px; }
+.pd-header-droite { display: flex; align-items: center; gap: 7px; }
+
+.pd-live-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #dc2626; flex-shrink: 0;
+  animation: pd-pulse 1.4s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(220,38,38,.6);
+}
+@keyframes pd-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .5; transform: scale(1.4); }
+}
+
+.pd-titre {
+  font-size: 1rem; font-weight: 900; color: #0f172a;
+  letter-spacing: -.2px;
+}
+
+.pd-header-stats   { display: flex; align-items: center; gap: 6px; }
+.pd-compteur-matchs {
+  font-size: .72rem; font-weight: 800;
+  color: #fff; background: #dc2626;
+  padding: 3px 10px; border-radius: 12px;
+}
+.pd-badge-mt {
+  font-size: .66rem; font-weight: 800; color: #92400e;
+  background: #fef3c7; padding: 2px 7px; border-radius: 7px;
+}
+.pd-maj-badge {
+  font-size: .66rem; color: #94a3b8;
+  background: #f1f5f9; padding: 2px 7px; border-radius: 7px;
+}
+
+/* ── États ────────────────────────────────────────────────────── */
+.pd-charg {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 64px 20px; color: #94a3b8; font-size: .88rem;
+}
+.pd-spinner {
+  width: 22px; height: 22px;
+  border: 2.5px solid #e2e8f0; border-top-color: #dc2626;
+  border-radius: 50%; animation: pd-spin .75s linear infinite; flex-shrink: 0;
+}
+@keyframes pd-spin { to { transform: rotate(360deg); } }
+
+.pd-erreur {
+  margin: 10px 12px; padding: 12px 14px;
+  background: #fff5f5; color: #b91c1c;
+  border-radius: 10px; font-size: .84rem;
+  border-left: 3px solid #dc2626;
+}
+
+/* ── Vide ─────────────────────────────────────────────────────── */
+.pd-vide {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 72px 20px 48px; text-align: center; gap: 8px; color: #94a3b8;
+}
+.pd-vide-orbe {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #fee2e2; border: 2px solid #fca5a5; margin-bottom: 10px;
+  animation: pd-pulse 2.5s ease-in-out infinite;
+}
+.pd-vide-titre { font-size: .95rem; font-weight: 800; color: #64748b; margin: 0; }
+.pd-vide-sous  { font-size: .76rem; }
+.pd-vide-ts    { font-size: .7rem; color: #c8d5e0; margin-top: 4px; }
+
+/* ── Message quota atteint ──────────────────────────────────────── */
+.pd-quota-msg {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 64px 24px 48px; text-align: center; gap: 10px;
+}
+.pd-quota-ico {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: #f1f5f9; border: 2px solid #e2e8f0;
+  display: flex; align-items: center; justify-content: center;
+  color: #94a3b8; margin-bottom: 6px;
+}
+.pd-quota-ico svg { width: 28px; height: 28px; }
+.pd-quota-titre { font-size: 1rem; font-weight: 800; color: #475569; margin: 0; }
+.pd-quota-sous  { font-size: .82rem; color: #64748b; }
+.pd-quota-sous strong { color: #1e293b; }
+.pd-quota-note  {
+  font-size: .72rem; color: #94a3b8;
+  background: #f8fafc; border: 1px solid #e2e8f0;
+  padding: 4px 12px; border-radius: 20px; margin-top: 4px;
+}
+
+/* ── Compétitions ─────────────────────────────────────────────── */
+.pd-competitions { display: flex; flex-direction: column; gap: 8px; padding: 8px 10px; }
+
+/* ── Bloc championnat ─────────────────────────────────────────── */
+.pd-champ-bloc {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+  border: 1px solid #e2e8f0;
+}
+
+.pd-champ-header {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 10px 13px; background: #fff; border: none;
+  border-left: 3px solid transparent; cursor: pointer;
+  text-align: left; font-family: inherit;
+  transition: background .14s, border-color .14s;
+}
+.pd-champ-header:hover  { background: #fef2f2; }
+.pd-champ-header.ouvert {
+  border-left-color: #dc2626;
+  background: linear-gradient(90deg, rgba(220,38,38,.04), #fff);
+}
+
+.pd-champ-infos { flex: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.pd-champ-pays  { font-size: .58rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .5px; }
+.pd-champ-nom   { font-size: .84rem; font-weight: 700; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.pd-champ-droite { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.pd-badge-mi-temps {
+  font-size: .58rem; font-weight: 800; color: #92400e;
+  background: #fef3c7; padding: 1px 5px; border-radius: 5px;
+}
+.pd-comp-count {
+  font-size: .7rem; font-weight: 800; color: #dc2626;
+  background: #fee2e2; padding: 1px 7px; border-radius: 9px;
+  min-width: 18px; text-align: center;
+}
+.pd-chevron { color: #cbd5e1; display: flex; align-items: center; }
+
+/* ── Liste matchs ─────────────────────────────────────────────── */
+.pd-matchs-liste { border-top: 1px solid #f1f5f9; }
+
+/* ── Carte match ──────────────────────────────────────────────── */
+.pd-match {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 13px; border-bottom: 1px solid #f8fafc;
+  background: #fff; transition: background .15s;
+}
+.pd-match:last-child { border-bottom: none; }
+.pd-match.pause { background: #fffbeb; }
+.pd-match-cliquable { cursor: pointer; }
+.pd-match-cliquable:hover { background: #f8fafc; }
+.pd-match.nouveau-but { animation: pd-but-flash .7s ease; }
+@keyframes pd-but-flash {
+  0%   { background: rgba(220,38,38,.08); }
+  50%  { background: rgba(220,38,38,.14); }
+  100% { background: #fff; }
+}
+
+/* Statut / Minute */
+.pd-m-statut {
+  min-width: 42px; display: flex; flex-direction: column;
+  align-items: center; gap: 4px; flex-shrink: 0; padding-top: 2px;
+}
+.pd-m-minute      { font-size: .76rem; font-weight: 900; color: #dc2626; }
+.pd-m-mi-temps    {
+  font-size: .6rem; font-weight: 800; color: #92400e;
+  background: #fef3c7; padding: 2px 5px; border-radius: 4px;
+}
+.pd-pulse-point {
+  width: 6px; height: 6px; border-radius: 50%; background: #dc2626;
+  animation: pd-pulse .9s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(220,38,38,.5);
+}
+
+/* Corps équipes */
+.pd-m-corps { flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.pd-m-equipe { display: flex; align-items: center; gap: 7px; }
+.pd-m-logo   { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
+.pd-m-logo-ph { font-size: .85rem; width: 20px; text-align: center; flex-shrink: 0; }
+.pd-m-nom {
+  flex: 1; font-size: .82rem; font-weight: 600; color: #1e293b;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pd-m-score {
+  font-size: 1.05rem; font-weight: 900; color: #dc2626;
+  min-width: 20px; text-align: right; flex-shrink: 0;
+  transition: transform .18s;
+}
+.pd-m-score.but { animation: pd-score-pop .5s cubic-bezier(.34,1.6,.64,1); }
+@keyframes pd-score-pop {
+  0%  { transform: scale(1); }
+  45% { transform: scale(1.45); }
+  100%{ transform: scale(1); }
+}
+
+/* Note rafraîchissement */
+.pd-note-refresh {
+  text-align: center; padding: 16px;
+  font-size: .72rem; color: #94a3b8;
+}

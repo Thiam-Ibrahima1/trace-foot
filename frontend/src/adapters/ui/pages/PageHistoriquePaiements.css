@@ -1,0 +1,288 @@
+/* PageHistoriquePaiements.css — Design Premium */
+.php-page { max-width: 1000px; display: flex; flex-direction: column; gap: 1.25rem; }
+
+/* ── Chargement ──────────────────────────────────────────────── */
+.php-charg {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; padding: 80px 20px; color: #94a3b8; font-size: 0.9rem;
+}
+.php-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid rgba(217,119,6,.15);
+  border-top-color: #d97706;
+  border-radius: 50%; animation: php-spin .8s cubic-bezier(.5,.1,.5,.9) infinite;
+  box-shadow: 0 0 16px rgba(217,119,6,.15);
+}
+@keyframes php-spin { to { transform: rotate(360deg); } }
+
+/* ── Skeleton Paiements ──────────────────────────────────────── */
+@keyframes php-skel-pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
+.php-skel-banniere { height: 80px; border-radius: 20px; background: linear-gradient(135deg,#1e293b,#0f2744); opacity:.4; animation: php-skel-pulse 1.4s ease-in-out infinite; }
+.php-skel-stats    { display: flex; gap: 14px; }
+.php-skel-stat     { flex: 1; height: 72px; border-radius: 14px; background: #e9eef4; animation: php-skel-pulse 1.4s ease-in-out infinite .1s; }
+.php-skel-ligne    { height: 68px; border-radius: 14px; background: #f1f5f9; animation: php-skel-pulse 1.4s ease-in-out infinite .15s; }
+
+/* ── Bannière titre ──────────────────────────────────────────── */
+.php-banniere {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f2744 100%);
+  border-radius: 20px; padding: 22px 28px;
+  display: flex; align-items: center; gap: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.06);
+}
+.php-banniere-ico {
+  width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+  background: linear-gradient(135deg,#b45309,#d97706,#f59e0b);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; box-shadow: 0 6px 20px rgba(217,119,6,.4);
+}
+.php-banniere-ico svg { width: 26px; height: 26px; }
+.php-banniere-texte { flex: 1; }
+.php-banniere-titre {
+  font-size: 1.25rem; font-weight: 900; color: #fff;
+  letter-spacing: -.3px; margin: 0 0 3px;
+}
+.php-banniere-sous {
+  font-size: 0.78rem; color: rgba(255,255,255,.5); margin: 0;
+}
+.php-banniere-badge {
+  background: linear-gradient(135deg,#d97706,#f59e0b);
+  color: #fff; font-size: 0.75rem; font-weight: 800;
+  padding: 6px 16px; border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(217,119,6,.3);
+  white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── Stats résumé ────────────────────────────────────────────── */
+.php-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem;
+}
+.php-stat {
+  background: #fff; border-radius: 16px; padding: 1.1rem 1.2rem;
+  border: 1.5px solid #eef0f4;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  display: flex; flex-direction: column; gap: 5px;
+  transition: transform .18s, box-shadow .18s;
+  cursor: default;
+}
+.php-stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.09);
+}
+.php-stat-icon {
+  width: 34px; height: 34px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 4px; flex-shrink: 0;
+}
+.php-stat-icon svg { width: 16px; height: 16px; }
+.php-stat-val {
+  font-size: 1.8rem; font-weight: 900; line-height: 1; letter-spacing: -.5px;
+}
+.php-stat-val-sm  { font-size: 1rem; letter-spacing: -.2px; line-height: 1.2; }
+.php-stat-lbl     { font-size: 0.71rem; font-weight: 600; color: #94a3b8; }
+
+.php-stat.total .php-stat-icon { background: #f1f5f9; color: #475569; }
+.php-stat.total .php-stat-val  { color: #334155; }
+
+.php-stat.vert .php-stat-icon { background: linear-gradient(135deg,#dcfce7,#bbf7d0); color: #15803d; }
+.php-stat.vert .php-stat-val  { color: #15803d; }
+.php-stat.vert  { background: linear-gradient(135deg,#fafffe,#f0fdf4); border-color: #bbf7d0; }
+
+.php-stat.or .php-stat-icon { background: linear-gradient(135deg,#fef3c7,#fde68a); color: #b45309; }
+.php-stat.or .php-stat-val  { color: #b45309; }
+.php-stat.or    { background: linear-gradient(135deg,#fffefb,#fffbeb); border-color: #fde68a; }
+
+.php-stat.ca .php-stat-icon { background: linear-gradient(135deg,#dcfce7,#bbf7d0); color: #15803d; }
+.php-stat.ca .php-stat-val  { color: #15803d; }
+.php-stat.ca    { background: linear-gradient(135deg,#fafffe,#f0fdf4); border-color: #bbf7d0; }
+
+/* ── Filtres ─────────────────────────────────────────────────── */
+.php-filtres {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+  background: #fff; border-radius: 16px;
+  border: 1.5px solid #eef0f4;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+.php-recherche-wrap {
+  display: flex; align-items: center; gap: 9px;
+  background: #f8fafc; border: 1.5px solid #e2e8f0;
+  border-radius: 12px; padding: 9px 14px; flex: 1; min-width: 220px;
+  transition: border-color .15s, background .15s, box-shadow .15s;
+}
+.php-recherche-wrap:focus-within {
+  border-color: #d97706; background: #fff;
+  box-shadow: 0 0 0 3px rgba(217,119,6,.1);
+}
+.php-recherche {
+  border: none; outline: none; background: transparent;
+  font-family: inherit; font-size: 0.84rem; color: #1e293b; flex: 1;
+}
+.php-recherche::placeholder { color: #c4cdd6; }
+
+.php-filtre-statut { display: flex; gap: 6px; flex-wrap: wrap; }
+.php-filtre-btn {
+  padding: 7px 16px; border-radius: 20px;
+  border: 1.5px solid #e2e8f0; background: #fff;
+  font-size: 0.75rem; font-weight: 700; color: #64748b;
+  cursor: pointer; font-family: inherit;
+  transition: all .18s; white-space: nowrap;
+}
+.php-filtre-btn:hover    { border-color: #d97706; color: #b45309; background: #fffbeb; }
+.php-filtre-btn.actif    {
+  background: linear-gradient(135deg,#b45309,#d97706,#f59e0b);
+  border-color: transparent; color: #fff;
+  box-shadow: 0 4px 14px rgba(217,119,6,.28);
+  transform: translateY(-1px);
+}
+
+/* ── Erreur / Vide ───────────────────────────────────────────── */
+.php-erreur {
+  padding: 14px 18px;
+  background: linear-gradient(135deg,#fff5f5,#fee2e2);
+  border-radius: 14px; color: #dc2626; font-size: 0.85rem;
+  border-left: 3px solid #ef4444;
+  box-shadow: 0 2px 8px rgba(239,68,68,.1);
+}
+.php-vide {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; padding: 72px 20px; color: #94a3b8; text-align: center;
+}
+.php-vide p { font-size: 0.95rem; font-weight: 600; color: #64748b; margin: 0; }
+
+/* ── Groupe par date ─────────────────────────────────────────── */
+.php-groupe {
+  background: #fff; border-radius: 20px; overflow: hidden;
+  border: 1.5px solid rgba(226,232,240,.8);
+  box-shadow: 0 4px 20px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.04);
+  transition: box-shadow .18s;
+}
+.php-groupe:hover { box-shadow: 0 6px 28px rgba(0,0,0,.09); }
+
+.php-date-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 20px; flex-wrap: wrap; gap: 10px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+.php-date-gauche  { display: flex; align-items: baseline; gap: 10px; }
+.php-date-label   {
+  font-size: 0.9rem; font-weight: 900; color: #fff;
+  text-transform: capitalize; letter-spacing: -.2px;
+}
+.php-date-raw     { font-size: 0.68rem; color: rgba(255,255,255,.35); }
+.php-date-droite  { display: flex; align-items: center; gap: 8px; }
+.php-date-nb      {
+  font-size: 0.72rem; font-weight: 700; color: #fff;
+  background: rgba(255,255,255,.12); padding: 3px 12px; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.1);
+}
+.php-date-ca      {
+  font-size: 0.72rem; font-weight: 800; color: #fff;
+  background: linear-gradient(135deg,#b45309,#d97706);
+  padding: 3px 12px; border-radius: 20px;
+  box-shadow: 0 3px 10px rgba(217,119,6,.3);
+}
+
+/* ── Ligne paiement ──────────────────────────────────────────── */
+.php-ligne {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 14px 20px;
+  border-top: 1px solid #f1f5f9;
+  transition: background .15s;
+  border-left: 3px solid transparent;
+}
+.php-ligne:hover          { background: #fafcff; }
+.php-ligne.valide         { border-left-color: #22c55e; }
+.php-ligne.en_attente     { border-left-color: #f59e0b; }
+.php-ligne.echec          { border-left-color: #ef4444; background: linear-gradient(90deg,rgba(239,68,68,.03),transparent); }
+
+/* Icône statut */
+.php-statut-ico {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.php-statut-ico.valide     { background: linear-gradient(135deg,#dcfce7,#bbf7d0); color: #15803d; }
+.php-statut-ico.en_attente { background: linear-gradient(135deg,#fef3c7,#fde68a); color: #b45309; }
+.php-statut-ico.echec      { background: linear-gradient(135deg,#fee2e2,#fecaca); color: #dc2626; }
+
+/* Match */
+.php-match-info {
+  display: flex; flex-direction: column; gap: 3px;
+  min-width: 160px; flex: 2;
+}
+.php-match-nom    { font-size: 0.86rem; font-weight: 800; color: #1e293b; }
+.php-vs           { color: #94a3b8; font-weight: 400; font-size: 0.75rem; margin: 0 4px; }
+.php-competition  { font-size: 0.68rem; color: #94a3b8; font-weight: 500; letter-spacing: .2px; }
+.php-match-supprime { font-size: 0.8rem; color: #94a3b8; font-style: italic; }
+
+/* Utilisateur */
+.php-user-info {
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 130px; flex: 1.5;
+}
+.php-user-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg,#1e3a5f,#1d4ed8);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 800; flex-shrink: 0; margin-bottom: 4px;
+}
+.php-user-nom   { font-size: 0.8rem; font-weight: 700; color: #334155; }
+.php-user-email { font-size: 0.68rem; color: #94a3b8; }
+
+/* Méthode */
+.php-methode-info {
+  display: flex; flex-direction: column; gap: 4px; flex-shrink: 0;
+}
+.php-methode-badge {
+  font-size: 0.69rem; font-weight: 800; padding: 3px 12px;
+  border-radius: 20px; background: #f1f5f9; color: #475569;
+  text-transform: uppercase; letter-spacing: .4px; white-space: nowrap;
+  border: 1px solid #e2e8f0;
+}
+.php-tel { font-size: 0.68rem; color: #94a3b8; padding-left: 2px; }
+
+/* Référence */
+.php-ref-info {
+  display: flex; flex-direction: column; gap: 3px;
+  flex-shrink: 0; min-width: 110px;
+}
+.php-heure { font-size: 0.74rem; font-weight: 700; color: #64748b; }
+.php-ref   {
+  font-size: 0.65rem; color: #c4cdd6;
+  font-family: 'Fira Code', 'Cascadia Code', monospace;
+  word-break: break-all;
+}
+
+/* Montant + badge */
+.php-droite {
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 5px; flex-shrink: 0; margin-left: auto;
+}
+.php-montant {
+  font-size: 0.95rem; font-weight: 900; color: #1e293b;
+  letter-spacing: -.2px;
+}
+.php-badge {
+  font-size: 0.68rem; font-weight: 800;
+  padding: 3px 12px; border-radius: 20px; white-space: nowrap;
+  letter-spacing: .2px;
+}
+.php-badge.valide     { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+.php-badge.en_attente { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+.php-badge.echec      { background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .php-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .php-ref-info  { display: none; }
+  .php-ligne     { gap: 10px; }
+}
+@media (max-width: 480px) {
+  .php-stats     { grid-template-columns: 1fr 1fr; }
+  .php-user-info { display: none; }
+  .php-banniere  { padding: 16px; }
+}

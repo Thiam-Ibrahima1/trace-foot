@@ -1,0 +1,495 @@
+/* ═══════════════════════════════════════════════════════════════
+   PageConnexion.css — Design Split Moderne
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Page — plein écran splitté ─────────────────────────────── */
+.cx-page {
+  position: fixed; inset: 0;
+  display: flex;
+  background: #f0f4f8;
+  overflow: hidden;
+}
+
+/* ── Panneau gauche — branding ───────────────────────────────── */
+.cx-panneau-gauche {
+  width: 42%;
+  flex-shrink: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(34,197,94,.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(16,185,129,.12) 0%, transparent 50%),
+    linear-gradient(160deg, #050e1a 0%, #0a1628 40%, #0d1f3a 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 48px 40px;
+  position: relative; overflow: hidden;
+}
+
+/* Orbe animé fond gauche */
+.cx-panneau-gauche::before {
+  content: '';
+  position: absolute;
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(22,163,74,.12) 0%, transparent 70%);
+  top: -80px; left: -80px;
+  animation: cx-orbe 8s ease-in-out infinite;
+}
+.cx-panneau-gauche::after {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,.08) 0%, transparent 70%);
+  bottom: -60px; right: -60px;
+  animation: cx-orbe 10s ease-in-out infinite reverse;
+}
+@keyframes cx-orbe {
+  0%, 100% { transform: scale(1) translate(0,0); }
+  50%       { transform: scale(1.12) translate(20px, 15px); }
+}
+
+/* Cercles décoratifs */
+.cx-deco-cercles {
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.cx-deco-cercles svg { width: 100%; height: 100%; opacity: .06; }
+
+/* Contenu panneau gauche */
+.cx-marque {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 0;
+}
+.cx-marque-logo {
+  width: 72px; height: 72px; border-radius: 20px;
+  object-fit: contain; margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.08);
+}
+.cx-marque-nom {
+  font-size: 2.2rem; font-weight: 900; color: #fff;
+  letter-spacing: -.5px; margin: 0 0 8px;
+  background: linear-gradient(135deg, #fff 0%, #a7f3d0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cx-marque-tag {
+  font-size: 0.9rem; color: rgba(255,255,255,.55);
+  margin: 0 0 40px; line-height: 1.5;
+}
+
+/* Badges features */
+.cx-features {
+  display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 260px;
+}
+.cx-feature {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px; padding: 12px 16px;
+  backdrop-filter: blur(8px);
+}
+.cx-feature-ico {
+  width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.cx-feature-ico.vert   { background: rgba(22,163,74,.2); }
+.cx-feature-ico.bleu   { background: rgba(59,130,246,.2); }
+.cx-feature-ico.or     { background: rgba(245,158,11,.2); }
+.cx-feature-txt { flex: 1; }
+.cx-feature-titre { font-size: 0.8rem; font-weight: 700; color: #fff; display: block; }
+.cx-feature-sous  { font-size: 0.68rem; color: rgba(255,255,255,.45); }
+
+/* ── Panneau droit — formulaire ──────────────────────────────── */
+.cx-panneau-droit {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 32px 28px; overflow-y: auto;
+  background: #fff;
+}
+
+/* ── Carte formulaire (cadre centré) ─────────────────────────── */
+.cx-carte {
+  width: 100%; max-width: 380px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 28px;
+  border: 1.5px solid #f1f5f9;
+  box-shadow: 0 4px 28px rgba(0,0,0,.07);
+  animation: cx-appear .4s cubic-bezier(.34,1.2,.64,1) both;
+}
+@keyframes cx-appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* En-tête centré de la carte */
+.cx-carte-header {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; margin-bottom: 20px; gap: 6px;
+}
+
+/* Séparateur léger entre header et formulaire */
+.cx-carte-sep {
+  height: 1px; background: #f1f5f9;
+  margin: 0 -28px 20px; /* dépasse les bords de la carte */
+}
+
+/* ── Logo (carte connexion — héritage) ───────────────────────── */
+.cx-logo         { text-align: center; margin-bottom: 1.5rem; display: flex; flex-direction: column; align-items: center; }
+.cx-logo.compact { margin-bottom: 1.1rem; }
+.cx-logo-img {
+  width: 44px; height: 44px; object-fit: contain;
+  border-radius: 12px; display: none;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+}
+.cx-titre {
+  font-size: 1.55rem; font-weight: 900;
+  color: #0f172a; letter-spacing: -.4px;
+  margin: 0 0 4px; text-align: center;
+}
+.cx-logo.compact .cx-titre { font-size: 1.3rem; }
+.cx-sous { font-size: 0.82rem; color: #94a3b8; margin: 0; font-weight: 500; text-align: center; }
+
+/* ── Formulaire ──────────────────────────────────────────────── */
+.cx-form             { display: flex; flex-direction: column; gap: 0.9rem; }
+.cx-form-inscription { gap: 0.7rem; }
+
+.cx-grille-inscription {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;
+}
+.cx-grille-mdp {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;
+}
+
+/* ── Champ ───────────────────────────────────────────────────── */
+.cx-field         { display: flex; flex-direction: column; gap: 0.35rem; }
+.cx-field.compact { gap: 0.25rem; }
+.cx-label {
+  font-size: 0.75rem; font-weight: 700;
+  color: #334155; letter-spacing: .1px;
+}
+.cx-field.compact .cx-label { font-size: 0.7rem; }
+
+/* ── Input ───────────────────────────────────────────────────── */
+.cx-input-wrap { position: relative; display: flex; align-items: center; }
+
+.cx-input-icone {
+  position: absolute; left: 12px;
+  width: 15px; height: 15px;
+  color: #94a3b8; pointer-events: none; flex-shrink: 0;
+}
+.cx-field.compact .cx-input-icone { left: 10px; width: 13px; height: 13px; }
+
+.cx-input {
+  width: 100%;
+  padding: 0.72rem 0.85rem 0.72rem 2.2rem;
+  border: 2px solid #e2e8f0; border-radius: 12px;
+  font-size: 0.88rem; color: #0f172a;
+  background: #f8fafc;
+  transition: border-color .15s, box-shadow .15s, background .15s;
+  font-family: inherit; outline: none;
+}
+.cx-field.compact .cx-input {
+  padding: 0.55rem 0.7rem 0.55rem 1.9rem;
+  font-size: 0.82rem; border-radius: 10px;
+}
+.cx-input:focus {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 4px rgba(22,163,74,.1);
+  background: #fff;
+}
+.cx-input::placeholder  { color: #c4cdd6; }
+.cx-input.cx-input-erreur { border-color: #ef4444; }
+.cx-input-mdp   { padding-right: 2.5rem; }
+.cx-input-code {
+  letter-spacing: 10px; font-size: 1.3rem;
+  font-weight: 800; text-align: center; padding-left: 2.2rem;
+}
+
+/* Bouton œil */
+.cx-oeil {
+  position: absolute; right: 10px;
+  background: none; border: none; cursor: pointer;
+  padding: 4px; color: #94a3b8;
+  display: flex; align-items: center; border-radius: 6px;
+  transition: color .15s, background .15s;
+}
+.cx-oeil:hover { color: #16a34a; background: rgba(22,163,74,.07); }
+.cx-oeil svg   { width: 16px; height: 16px; }
+
+/* Concordance mdp */
+.cx-match     { font-size: 0.73rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+.cx-match.ok  { color: #16a34a; }
+.cx-match.nok { color: #ef4444; }
+
+/* ── Messages ────────────────────────────────────────────────── */
+.cx-erreur {
+  background: #fff5f5; color: #dc2626;
+  padding: 0.7rem 1rem; border-radius: 12px;
+  font-size: 0.81rem; font-weight: 500;
+  border: 1.5px solid #fecaca;
+  display: flex; align-items: center; gap: 8px;
+}
+.cx-succes {
+  background: #f0fdf4; color: #15803d;
+  padding: 0.7rem 1rem; border-radius: 12px;
+  font-size: 0.81rem; font-weight: 600;
+  border: 1.5px solid #86efac;
+  display: flex; align-items: center; gap: 8px;
+}
+.cx-info-texte {
+  font-size: 0.82rem; color: #64748b; line-height: 1.6;
+  background: #f8fafc; padding: 0.7rem 1rem;
+  border-radius: 12px; border-left: 3px solid #c8e6c9;
+}
+.cx-email-recap {
+  font-size: 0.79rem; color: #475569; background: #f0fdf4;
+  padding: 0.55rem 0.9rem; border-radius: 10px;
+  border: 1.5px solid #bbf7d0;
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* ── Boutons ─────────────────────────────────────────────────── */
+
+/* Bouton principal : compact, centré, juste le texte + marges */
+.cx-btn-primary {
+  padding: 0.65rem 2rem;
+  background: linear-gradient(135deg, #15803d, #16a34a);
+  color: #fff; border: none; border-radius: 10px;
+  font-size: 0.88rem; font-weight: 700;
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  box-shadow: 0 4px 14px rgba(22,163,74,.28);
+  transition: all .18s; font-family: inherit;
+  letter-spacing: .1px;
+  align-self: center;   /* centré dans le flex-column du formulaire */
+  min-width: 140px;
+}
+.cx-btn-primary:hover {
+  background: linear-gradient(135deg, #166534, #15803d);
+  box-shadow: 0 6px 20px rgba(22,163,74,.36);
+  transform: translateY(-1px);
+}
+.cx-btn-primary:active  { transform: translateY(0); box-shadow: none; }
+.cx-btn-primary:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Bouton retour : compact, centré, contour discret */
+.cx-btn-retour {
+  background: none; border: 1.5px solid #e2e8f0; color: #64748b;
+  padding: 0.55rem 1.5rem; border-radius: 10px;
+  font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  transition: all .15s; font-family: inherit;
+  align-self: center; min-width: 120px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.cx-btn-retour:hover { border-color: #16a34a; color: #15803d; background: rgba(22,163,74,.04); }
+
+/* Zone d'actions — boutons côte à côte au centre */
+.cx-form-actions {
+  display: flex; gap: 10px; justify-content: center;
+  align-items: center; flex-wrap: wrap; padding-top: 4px;
+}
+
+/* ── Liens bas ───────────────────────────────────────────────── */
+.cx-liens     { display: flex; align-items: center; justify-content: center; gap: 12px; padding-top: 4px; }
+.cx-lien      {
+  background: none; border: none; color: #15803d;
+  font-size: 0.81rem; cursor: pointer; font-weight: 700;
+  padding: 0; font-family: inherit; transition: color .15s;
+}
+.cx-lien:hover { color: #22c55e; }
+.cx-lien-sep  { color: #e2e8f0; }
+
+/* Séparateur */
+.cx-separateur {
+  display: flex; align-items: center; gap: 12px; margin: 4px 0;
+}
+.cx-sep-ligne { flex: 1; height: 1px; background: #e2e8f0; }
+.cx-sep-txt   { font-size: 0.72rem; color: #94a3b8; font-weight: 600; white-space: nowrap; }
+
+/* ── Spinner ─────────────────────────────────────────────────── */
+.cx-spinner {
+  width: 16px; height: 16px;
+  border: 2.5px solid rgba(255,255,255,.35);
+  border-top-color: #fff; border-radius: 50%;
+  animation: cx-spin .7s linear infinite; flex-shrink: 0;
+}
+@keyframes cx-spin { to { transform: rotate(360deg); } }
+
+/* ════════════════════════════════════════════════════════════════
+   PAGES STANDALONE — Inscription & Mot de passe oublié
+   Fond neutre semi-transparent, carte centrée, sans panneau gauche
+   ════════════════════════════════════════════════════════════════ */
+.cx-standalone {
+  position: fixed; inset: 0; z-index: 200;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(34,197,94,.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(59,130,246,.06) 0%, transparent 50%),
+    #f0f4f8;
+  display: flex; align-items: center; justify-content: center;
+  overflow-y: auto; padding: 24px 16px;
+  animation: cx-appear .25s ease both;
+}
+
+/* Bouton retour flèche SVG — positionné en haut à gauche de la page */
+.cx-back-btn {
+  position: fixed; top: 18px; left: 18px; z-index: 210;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,.92); border: 1.5px solid #e2e8f0;
+  display: flex; align-items: center; justify-content: center;
+  color: #475569; cursor: pointer; transition: all .15s;
+  box-shadow: 0 2px 10px rgba(0,0,0,.09);
+}
+.cx-back-btn:hover { background: #fff; color: #0f172a; box-shadow: 0 4px 16px rgba(0,0,0,.14); transform: translateX(-2px); }
+
+.cx-standalone-card {
+  width: 100%; max-width: 560px;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 36px 32px 32px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.8) inset;
+  border: 1px solid rgba(255,255,255,.7);
+}
+.cx-standalone-card-sm { max-width: 420px; }
+
+/* Header de la carte standalone */
+.cx-standalone-header {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; margin-bottom: 24px; gap: 6px;
+}
+.cx-standalone-logo {
+  width: 52px; height: 52px; object-fit: contain; border-radius: 14px;
+  margin-bottom: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.12);
+}
+.cx-standalone-ico {
+  width: 60px; height: 60px; border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 8px; flex-shrink: 0;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  color: #1d4ed8;
+}
+.cx-standalone-ico.vert {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  color: #15803d;
+}
+.cx-standalone-ico svg { width: 28px; height: 28px; }
+
+.cx-standalone-titre {
+  font-size: 1.55rem; font-weight: 900; color: #0f172a;
+  letter-spacing: -.4px; margin: 0;
+}
+.cx-standalone-sous {
+  font-size: 0.82rem; color: #64748b; margin: 0;
+  line-height: 1.5;
+}
+.cx-standalone-sous strong { color: #1e293b; }
+
+@media (max-width: 480px) {
+  .cx-standalone-card { padding: 24px 18px; border-radius: 18px; }
+  .cx-standalone-titre { font-size: 1.3rem; }
+}
+
+/* ── Icône bienvenue (panneau droit connexion) ───────────────── */
+.cx-bienvenue-ico {
+  width: 60px; height: 60px; border-radius: 18px;
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px; color: #15803d;
+  box-shadow: 0 4px 16px rgba(22,163,74,.18);
+}
+.cx-bienvenue-ico svg { width: 30px; height: 30px; }
+
+/* ── Pages plein écran (inscription / mot de passe oublié) ───── */
+.cx-fullpage {
+  position: fixed; inset: 0; z-index: 200;
+  background: #f0f4f8;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  animation: cx-appear .25s ease both;
+}
+
+/* Barre de navigation haute */
+.cx-fullpage-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  background: #fff;
+  border-bottom: 1px solid #e8f5e9;
+  flex-shrink: 0;
+}
+.cx-fullpage-retour {
+  display: flex; align-items: center; gap: 6px;
+  background: none; border: 1.5px solid #e2e8f0; border-radius: 10px;
+  color: #475569; font-size: 0.82rem; font-weight: 700;
+  padding: 7px 14px; cursor: pointer; font-family: inherit;
+  transition: all .15s;
+}
+.cx-fullpage-retour:hover { border-color: #16a34a; color: #15803d; }
+.cx-fullpage-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 10px; }
+
+/* Corps scrollable centré */
+.cx-fullpage-body {
+  flex: 1; overflow-y: auto;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 32px 20px 48px;
+  scrollbar-width: none;
+}
+.cx-fullpage-body::-webkit-scrollbar { display: none; }
+
+/* Carte formulaire */
+.cx-fullpage-card {
+  width: 100%; max-width: 480px;
+  background: #fff; border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.08);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+
+/* Icône ronde colorée */
+.cx-fullpage-ico {
+  width: 64px; height: 64px; border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 8px; flex-shrink: 0;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  color: #15803d;
+}
+.cx-fullpage-ico.bleu {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  color: #1d4ed8;
+}
+.cx-fullpage-ico.vert {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  color: #15803d;
+}
+.cx-fullpage-ico svg { width: 30px; height: 30px; }
+
+.cx-fullpage-titre {
+  font-size: 1.45rem; font-weight: 900; color: #0f172a;
+  letter-spacing: -.4px; margin: 0; text-align: center;
+}
+.cx-fullpage-sous {
+  font-size: 0.82rem; color: #64748b; margin: 0 0 16px;
+  text-align: center; line-height: 1.5;
+}
+.cx-fullpage-sous strong { color: #1e293b; }
+
+/* Formulaire dans fullpage */
+.cx-fullpage-card .cx-form { width: 100%; max-width: 360px; }
+
+/* ── Responsive — masquer panneau gauche sur petit écran ─────── */
+@media (max-width: 768px) {
+  .cx-panneau-gauche { display: none; }
+  .cx-panneau-droit  { background: #f0f4f8; }
+  .cx-carte {
+    background: #fff; border-radius: 20px; padding: 2rem 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,.1);
+  }
+}
+@media (max-width: 480px) {
+  .cx-grille-inscription { grid-template-columns: 1fr; }
+  .cx-grille-mdp         { grid-template-columns: 1fr; }
+  .cx-panneau-droit      { padding: 20px 16px; }
+  .cx-fullpage-card      { padding: 24px 18px; border-radius: 16px; }
+}

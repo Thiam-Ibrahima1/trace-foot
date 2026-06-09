@@ -1,0 +1,134 @@
+/* PageHistorique.css — Historique semaine : calendrier + accordéon */
+.page-historique { padding: 0 0 32px; max-width: 900px; }
+
+/* ── Stats ──────────────────────────────────────────────────── */
+.histo-stats { display: flex; gap: 8px; padding: 12px 14px; flex-wrap: wrap; }
+.hs-carte { flex: 1; min-width: 70px; background: #f8fafc; border: 1.5px solid #e2e8f0;
+  border-radius: 10px; padding: 10px 8px; text-align: center; }
+.hs-carte.vert  { background: #dcfce7; border-color: #86efac; }
+.hs-carte.rouge { background: #fee2e2; border-color: #fca5a5; }
+.hs-carte.gris  { background: #f1f5f9; border-color: #e2e8f0; }
+.hs-val { display: block; font-size: 1.4rem; font-weight: 900; color: #1b5e20; }
+.hs-carte.rouge .hs-val { color: #dc2626; }
+.hs-carte.gris  .hs-val { color: #64748b; }
+.hs-lbl { display: block; font-size: 0.65rem; font-weight: 600; color: #64748b; margin-top: 2px; }
+
+/* ── États ───────────────────────────────────────────────────── */
+.histo-charg { padding: 40px; text-align: center; color: #94a3b8; font-size: 0.9rem; }
+.histo-vide  { padding: 48px; text-align: center; color: #94a3b8; font-size: 0.88rem; }
+.histo-erreur { padding: 10px 14px; margin: 0 14px 10px; background: #fee2e2; border-radius: 8px; color: #dc2626; font-size: 0.82rem; }
+
+/* ── Section date ─────────────────────────────────────────────── */
+.histo-date-section { margin-bottom: 8px; }
+.histo-date-header {
+  display: flex; align-items: center; gap: 8px; padding: 8px 14px;
+  background: #1b5e20; color: #fff; border-radius: 10px 10px 0 0;
+}
+.histo-date-label { font-weight: 700; font-size: 0.88rem; flex: 1; text-transform: capitalize; }
+.histo-date-raw   { font-size: 0.7rem; opacity: .7; }
+.histo-date-nb    { font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,.2);
+  padding: 2px 8px; border-radius: 8px; }
+
+/* ── Bouton Supprimer sur la ligne du championnat ────────────── */
+.histo-btn-suppr-champ {
+  display: flex; align-items: center; gap: 5px; padding: 5px 10px;
+  background: #dc2626; color: #fff; border: none; border-radius: 6px;
+  font-size: 0.72rem; font-weight: 700; cursor: pointer; font-family: inherit;
+  flex-shrink: 0; white-space: nowrap; transition: background .15s;
+}
+.histo-btn-suppr-champ:hover:not(:disabled) { background: #b91c1c; }
+.histo-btn-suppr-champ:disabled { opacity: .6; cursor: not-allowed; }
+
+/* ── Checkbox SVG ────────────────────────────────────────────── */
+.histo-checkbox {
+  background: none; border: none; padding: 2px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; border-radius: 4px; transition: background .1s;
+}
+.histo-checkbox:hover { background: #e8f5e9; }
+
+/* ── Accordéon championnat ───────────────────────────────────── */
+.histo-champ-bloc { background: #fff; border: 1px solid #e2e8f0; border-top: none; }
+.histo-champ-bloc:last-child { border-radius: 0 0 10px 10px; }
+
+/* Wrapper header = checkbox + bouton titre */
+.histo-champ-header-wrap {
+  display: flex; align-items: center; gap: 4px;
+  padding: 5px 8px 5px 10px; background: #f8fafc; border-bottom: 1px solid #e2e8f0;
+}
+.histo-champ-bloc.ouvert .histo-champ-header-wrap { background: #f0fdf4; border-bottom-color: #c8e6c9; }
+
+.histo-champ-header {
+  flex: 1; display: flex; align-items: center; gap: 8px;
+  padding: 5px 6px; background: none; border: none;
+  cursor: pointer; text-align: left; font-family: inherit; transition: background 0.12s;
+}
+.histo-champ-header:hover { background: #e8f5e9; border-radius: 6px; }
+
+.histo-champ-ico  { font-size: 0.9rem; flex-shrink: 0; }
+.histo-champ-nom  { flex: 1; font-size: 0.78rem; font-weight: 700; color: #1b5e20;
+  text-transform: uppercase; letter-spacing: 0.4px; }
+.histo-champ-nb   { font-size: 0.68rem; font-weight: 700; background: #e8f5e9;
+  color: #2e7d32; padding: 2px 7px; border-radius: 10px; }
+.histo-badge-mini { font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 8px; }
+.histo-badge-mini.vert  { background: #dcfce7; color: #16a34a; }
+.histo-badge-mini.rouge { background: #fee2e2; color: #dc2626; }
+.histo-chevron    { display: flex; align-items: center; color: #94a3b8; flex-shrink: 0; }
+
+/* ── Ligne prédiction ────────────────────────────────────────── */
+.histo-pred-ligne {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 8px 10px 8px 10px; border-bottom: 1px solid #f5f5f5; position: relative;
+}
+.histo-pred-ligne:last-child  { border-bottom: none; }
+.histo-pred-ligne.correct     { background: #f0fdf4; border-left: 3px solid #16a34a; }
+.histo-pred-ligne.incorrect   { background: #fff5f5; border-left: 3px solid #ef4444; }
+.histo-pred-ligne.selectionnee{ background: #f0fdf4; outline: 1.5px solid #2e7d32; outline-offset: -1px; }
+
+.histo-pred-match { flex: 1; min-width: 150px; display: flex; align-items: center; gap: 5px; }
+.histo-pred-dom, .histo-pred-ext { font-size: 0.82rem; font-weight: 600; color: #1e293b;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px; }
+.histo-pred-vs    { font-size: 0.7rem; color: #94a3b8; flex-shrink: 0; }
+.histo-pred-heure { font-size: 0.68rem; color: #94a3b8; flex-shrink: 0; }
+
+.histo-pred-scores { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.histo-sc-lbl  { font-size: 0.6rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; }
+.histo-sc-val  { font-size: 0.92rem; font-weight: 900; }
+.histo-sc-val.predit   { color: #1b5e20; }
+.histo-sc-val.correct  { color: #16a34a; }
+.histo-sc-val.incorrect{ color: #ef4444; }
+.histo-sc-sep  { font-size: 0.7rem; color: #cbd5e1; }
+
+.histo-statut { font-size: 0.67rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+.histo-statut.attente  { background: #f1f5f9; color: #64748b; }
+.histo-statut.correct  { background: #dcfce7; color: #16a34a; }
+.histo-statut.incorrect{ background: #fee2e2; color: #ef4444; }
+
+/* ── Combinaisons colorées ───────────────────────────────────── */
+.histo-combis { display: flex; gap: 4px; flex-wrap: wrap; }
+.hc-tag { font-size: 0.7rem; font-weight: 800; padding: 3px 8px;
+  border-radius: 8px; border: 1.5px solid; white-space: nowrap; transition: all .2s; }
+/* Jaune : en attente */
+.hc-tag.combi-pending { background: #fef9c3; color: #92400e; border-color: #fde68a; }
+/* Vert : combinaison gagnée */
+.hc-tag.combi-ok  { background: #dcfce7; color: #15803d; border-color: #86efac; }
+/* Rouge : combinaison perdue */
+.hc-tag.combi-nok { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+
+/* ── Supprimer ───────────────────────────────────────────────── */
+.histo-btn-suppr {
+  width: 26px; height: 26px; border-radius: 6px; border: 1.5px solid #e2e8f0;
+  background: #f8fafc; color: #94a3b8; cursor: pointer; font-size: 0.7rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-left: auto;
+  transition: all .15s;
+}
+.histo-btn-suppr:hover { background: #fee2e2; color: #ef4444; border-color: #fca5a5; }
+
+.histo-confirm-suppr {
+  width: 100%; display: flex; align-items: center; gap: 8px;
+  background: #fff5f5; border-radius: 6px; padding: 5px 10px; font-size: 0.75rem; color: #dc2626;
+}
+.histo-btn-oui { padding: 3px 10px; background: #dc2626; color: #fff; border: none;
+  border-radius: 5px; font-size: 0.7rem; font-weight: 700; cursor: pointer; font-family: inherit; }
+.histo-btn-non { padding: 3px 10px; background: #e2e8f0; color: #64748b; border: none;
+  border-radius: 5px; font-size: 0.7rem; font-weight: 700; cursor: pointer; font-family: inherit; }

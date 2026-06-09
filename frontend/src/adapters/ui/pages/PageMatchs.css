@@ -1,0 +1,291 @@
+.page-matchs { background: #f0f4f8; min-height: 100vh; padding-bottom: 90px; }
+
+/* ── Barre de dates ──────────────────────────────────────────── */
+.pm-dates-wrap {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(226,232,240,.7);
+  box-shadow: 0 2px 14px rgba(0,0,0,.06);
+}
+.pm-dates {
+  display: flex; gap: 7px; overflow-x: auto;
+  padding: 11px 12px; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.pm-dates::-webkit-scrollbar { display: none; }
+
+.pm-date-btn {
+  flex-shrink: 0; display: flex; flex-direction: column;
+  align-items: center; gap: 1px; padding: 8px 12px;
+  border: 1.5px solid #e2e8f0; border-radius: 16px;
+  background: #fff; cursor: pointer;
+  transition: all .18s cubic-bezier(.4,0,.2,1);
+  min-width: 58px; position: relative;
+}
+.pm-date-btn:hover {
+  border-color: #16a34a; background: #f0fdf4;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(22,163,74,.12);
+}
+.pm-date-btn.actif {
+  background: linear-gradient(135deg, #15803d, #16a34a);
+  border-color: transparent; color: #fff;
+  box-shadow: 0 4px 16px rgba(22,163,74,.28);
+  transform: translateY(-1px);
+}
+.pm-date-btn.passe { opacity: .65; }
+.pm-date-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+.pm-date-num   { font-size: 0.78rem; font-weight: 700; }
+.pm-date-dot   {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: #16a34a; position: absolute; bottom: 5px;
+}
+.pm-date-btn.actif .pm-date-dot { background: rgba(255,255,255,.7); }
+
+.pm-resume {
+  padding: 4px 14px 9px;
+  font-size: 0.74rem; color: #64748b; font-weight: 500;
+}
+
+/* ── États ───────────────────────────────────────────────────── */
+.pm-charg {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 56px 20px; color: #94a3b8; font-size: 0.88rem;
+}
+.pm-spinner {
+  width: 22px; height: 22px;
+  border: 2.5px solid #e2e8f0;
+  border-top-color: #16a34a; border-radius: 50%;
+  animation: pm-spin .75s cubic-bezier(.5,.1,.5,.9) infinite;
+  flex-shrink: 0;
+}
+@keyframes pm-spin { to { transform: rotate(360deg); } }
+
+.pm-erreur {
+  margin: 14px; padding: 14px 16px;
+  background: linear-gradient(135deg, #fff0f0, #fff5f5);
+  color: #dc2626; border-radius: 14px; font-size: 0.85rem;
+  border-left: 3px solid #ef4444;
+  box-shadow: 0 2px 8px rgba(239,68,68,.1);
+}
+.pm-vide {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 64px 20px 48px;
+  color: #94a3b8; text-align: center; gap: 8px;
+}
+.pm-vide p    { font-size: 1rem; font-weight: 700; color: #64748b; margin: 0 0 4px; }
+.pm-vide span { font-size: 0.82rem; line-height: 1.55; }
+
+/* ── Championnat ─────────────────────────────────────────────── */
+.pm-championnat {
+  margin: 10px 10px 0;
+  background: #fff;
+  border-radius: 18px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+  border: 1px solid rgba(226,232,240,.8);
+  transition: box-shadow .18s;
+}
+.pm-champ-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #f8fffe, #f0fdf4);
+  border-bottom: 1px solid #e8f5e9;
+}
+.pm-champ-flag { font-size: 1.05rem; flex-shrink: 0; }
+.pm-champ-nom  {
+  flex: 1; font-size: 0.77rem; font-weight: 800;
+  color: #14532d; text-transform: uppercase; letter-spacing: .6px;
+}
+.pm-champ-nb {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: #15803d; font-size: 0.67rem;
+  font-weight: 800; padding: 2px 9px; border-radius: 12px;
+}
+
+/* ── Match ───────────────────────────────────────────────────── */
+.pm-match {
+  border-bottom: 1px solid #f1f5f9; cursor: pointer;
+  transition: background .12s;
+}
+.pm-match:last-child   { border-bottom: none; }
+.pm-match:hover        { background: #f8faff; }
+.pm-match.en-cours     {
+  background: linear-gradient(90deg, rgba(22,163,74,.06), transparent);
+  border-left: 3px solid #16a34a;
+}
+.pm-match.correct      { background: #f0fdf4; }
+.pm-match.incorrect    { background: #fff5f5; }
+.pm-match.ouvert       { background: #fafafa; }
+
+.pm-match-ligne { display: flex; align-items: center; gap: 8px; padding: 11px 12px; }
+
+/* Colonne heure */
+.pm-col-heure {
+  min-width: 44px; display: flex; flex-direction: column;
+  align-items: center; gap: 2px; flex-shrink: 0;
+}
+.pm-heure { font-size: 0.8rem; font-weight: 800; color: #1e293b; }
+.pm-live  {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 0.68rem; font-weight: 800; color: #16a34a; letter-spacing: .3px;
+}
+.pm-live::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #16a34a;
+  animation: live-pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .5; transform: scale(.7); }
+}
+.pm-fin { font-size: 0.7rem; font-weight: 700; color: #94a3b8; }
+.pm-mt  { font-size: 0.62rem; color: #f59e0b; font-weight: 700; }
+
+/* Colonne équipes */
+.pm-col-match { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+
+.pm-equipe-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 6px;
+}
+.pm-equipe-gauche {
+  display: flex; align-items: center; gap: 6px; min-width: 0; flex: 1;
+}
+.pm-logo             { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
+.pm-logo-placeholder { font-size: 0.95rem; flex-shrink: 0; }
+.pm-equipe-nom       {
+  font-size: 0.83rem; font-weight: 600; color: #1e293b;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pm-score-num {
+  font-size: 1.05rem; font-weight: 900; color: #15803d;
+  min-width: 22px; text-align: right; flex-shrink: 0;
+  opacity: 0; transition: opacity .25s;
+}
+.pm-score-num.visible { opacity: 1; }
+
+/* Colonne droite */
+.pm-col-droite { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.pm-combis     { display: flex; flex-direction: column; gap: 3px; align-items: flex-end; }
+.pm-combi {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 0.65rem; font-weight: 700; padding: 2px 7px;
+  border-radius: 8px; border: 1.5px solid; white-space: nowrap;
+}
+.pm-combi.neutre { border-color: #e2e8f0; color: #64748b; background: #f8fafc; }
+.pm-combi.ok     { border-color: #86efac; color: #15803d; background: #f0fdf4; }
+.pm-combi.nok    { border-color: #fca5a5; color: #dc2626; background: #fff5f5; }
+.pm-chevron      { color: #cbd5e1; display: flex; align-items: center; flex-shrink: 0; }
+
+/* ── Panneau détails ─────────────────────────────────────────── */
+.det-panneau  {
+  border-top: 1px solid #f0fdf4;
+  background: linear-gradient(135deg, #fafffe, #f8fafc);
+}
+.det-onglets  { display: flex; border-bottom: 1px solid #e8f5e9; padding: 0 12px; }
+.det-onglet   {
+  padding: 10px 14px; background: none; border: none;
+  border-bottom: 2.5px solid transparent;
+  font-size: 0.8rem; font-weight: 600; color: #94a3b8;
+  cursor: pointer; transition: all .15s; font-family: inherit;
+}
+.det-onglet.actif { color: #16a34a; border-bottom-color: #16a34a; }
+.det-charg    {
+  display: flex; align-items: center; gap: 8px;
+  padding: 20px 14px; color: #94a3b8; font-size: 0.82rem;
+}
+.det-corps    { padding: 14px; }
+
+.det-info-ligne {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid #f1f5f9;
+}
+.det-lbl { font-size: 0.74rem; color: #94a3b8; font-weight: 600; }
+.det-val { font-size: 0.82rem; color: #334155; font-weight: 500; text-align: right; }
+
+.det-score-bloc {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 14px; padding: 14px 16px;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-radius: 14px; gap: 8px;
+  border: 1px solid #bbf7d0;
+}
+.det-score-equipe { display: flex; align-items: center; gap: 6px; flex: 1;
+  font-size: 0.8rem; font-weight: 600; color: #15803d; }
+.det-score-txt { font-size: 1.7rem; font-weight: 900; color: #15803d; flex-shrink: 0; }
+
+.det-sous-titre { font-size: 0.8rem; font-weight: 800; color: #1e293b; margin-bottom: 10px; }
+.det-vide       { color: #94a3b8; font-size: 0.82rem; padding: 14px 0; margin: 0; }
+.det-combi      {
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 11px 13px; margin-bottom: 8px;
+  border-radius: 12px; background: #f8fafc;
+  border: 1px solid #f1f5f9;
+}
+.det-combi-desc { font-size: 0.76rem; color: #64748b; }
+.det-interp     {
+  font-size: 0.82rem; color: #475569; line-height: 1.65;
+  margin-top: 10px; padding: 12px 14px;
+  background: #f8fafc; border-radius: 10px;
+  border-left: 3px solid #bbf7d0;
+}
+.det-vip-note   {
+  display: flex; align-items: center; gap: 7px; margin-top: 12px;
+  padding: 10px 13px;
+  background: linear-gradient(135deg, #fffbeb, #fef9c3);
+  border-radius: 12px;
+  font-size: 0.82rem; color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+/* ── Forme équipe ────────────────────────────────────────────── */
+.det-forme   { display: flex; flex-direction: column; gap: 16px; }
+.forme-titre { font-size: 0.82rem; font-weight: 800; color: #15803d; margin: 0 0 9px; }
+.forme-match {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.8rem;
+}
+.forme-res {
+  width: 22px; height: 22px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 800; flex-shrink: 0;
+}
+.forme-res.v { background: #dcfce7; color: #15803d; }
+.forme-res.n { background: #f1f5f9; color: #64748b; }
+.forme-res.d { background: #fee2e2; color: #dc2626; }
+.forme-noms  { color: #475569; font-size: 0.78rem; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Section par date ────────────────────────────────────────── */
+.pm-section-date { margin-bottom: 6px; }
+
+.pm-section-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px 6px;
+  position: sticky; top: 70px; z-index: 10;
+  background: #f0f4f8;
+}
+.pm-section-label {
+  font-size: 0.85rem; font-weight: 800; color: #15803d;
+  text-transform: capitalize; flex: 1; letter-spacing: -.1px;
+}
+.pm-section-nb   { font-size: 0.72rem; color: #64748b; font-weight: 500; }
+.pm-section-badge {
+  font-size: 0.63rem; font-weight: 800; padding: 2px 9px;
+  border-radius: 12px; text-transform: uppercase; letter-spacing: .4px;
+}
+.pm-section-badge.resultats    { background: #e2e8f0; color: #64748b; }
+.pm-section-badge.aujourd-hui  {
+  background: linear-gradient(135deg, #15803d, #16a34a);
+  color: #fff; box-shadow: 0 2px 8px rgba(22,163,74,.25);
+}
+.pm-section-badge.programme    { background: #dcfce7; color: #15803d; }
+
+.pm-section-date.aujourd-hui .pm-section-header { background: #f0fdf4; }
+.pm-section-date.futur .pm-section-header        { background: #f8fafb; }
+.pm-section-date.passe .pm-section-header        { background: #f0f4f8; }
+
+.pm-section-date:first-child .pm-section-header { top: 70px; }

@@ -1,0 +1,996 @@
+/* Page VIP — Design Premium Gold */
+.page-vip {
+  background: #f0f4f8;
+  min-height: 100%;
+}
+
+/* ── Bouton Retour vue détail ────────────────────────────────── */
+.vip-detail-retour {
+  display: flex; align-items: center; gap: 6px;
+  margin: 12px 14px 0; padding: 7px 14px;
+  background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px;
+  color: #475569; font-size: 0.8rem; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  transition: all .18s;
+  width: fit-content;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+.vip-detail-retour:hover {
+  border-color: #94a3b8; color: #1e293b;
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+  transform: translateX(-2px);
+}
+
+/* ── Carte détail principale ─────────────────────────────────── */
+.vip-detail-carte {
+  margin: 14px auto; padding: 0 0 14px;
+  background: #fff; border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.1), 0 1px 4px rgba(0,0,0,.05);
+  display: flex; flex-direction: column; align-items: center;
+  overflow: hidden;
+  width: calc(100% - 40px); max-width: 360px;
+  border: 1px solid rgba(226,232,240,.8);
+}
+
+/* Badge certifié */
+.vip-detail-badge {
+  display: flex; align-items: center; gap: 6px;
+  width: 100%; padding: 8px 14px;
+  background: linear-gradient(135deg, #b45309, #d97706, #f59e0b);
+  color: #fff; font-size: 0.72rem; font-weight: 800;
+  justify-content: center; letter-spacing: .3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+.vip-detail-comp {
+  margin-top: 10px; display: flex; align-items: center; gap: 5px;
+  font-size: 0.65rem; font-weight: 700;
+  color: #64748b; text-transform: uppercase; letter-spacing: .5px;
+}
+.vip-detail-date { font-size: 0.67rem; color: #b0bec5; margin-top: 2px; }
+
+/* Équipes */
+.vip-detail-equipes {
+  display: flex; align-items: center; gap: 10px;
+  margin: 10px 0 8px; padding: 0 14px; width: 100%;
+  justify-content: center;
+}
+.vip-detail-equipe {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  flex: 1; max-width: 92px;
+}
+.vip-detail-equipe span {
+  font-size: 0.73rem; font-weight: 800; color: #1e293b;
+  text-align: center; line-height: 1.2;
+}
+.vip-detail-logo    { width: 42px; height: 42px; object-fit: contain; }
+.vip-detail-logo-ph { font-size: 2rem; line-height: 1; }
+.vip-detail-vs {
+  font-size: 0.72rem; font-weight: 900; color: #94a3b8;
+  background: #f1f5f9; padding: 5px 10px; border-radius: 8px;
+  flex-shrink: 0; border: 1px solid #e2e8f0;
+}
+
+/* Zone score débloqué */
+.vip-detail-score-zone {
+  display: flex; flex-direction: row; align-items: center; gap: 12px;
+  margin: 6px auto 10px; padding: 12px 24px;
+  background: linear-gradient(135deg, #14532d, #15803d, #16a34a);
+  border-radius: 14px;
+  width: fit-content; max-width: calc(100% - 40px);
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(22,163,74,.3);
+}
+.vip-detail-score-lbl {
+  display: flex; align-items: center; gap: 5px;
+  color: rgba(255,255,255,.8); font-size: 0.75rem; font-weight: 700;
+}
+.vip-detail-score {
+  font-size: 1.45rem; font-weight: 900; color: #fff;
+  letter-spacing: 4px; line-height: 1;
+  background: rgba(255,255,255,.15); padding: 5px 16px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.25);
+  text-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.vip-detail-explication {
+  font-size: 0.68rem; color: rgba(255,255,255,.65);
+  text-align: center; margin: 0; max-width: 240px;
+}
+
+/* Indicateur "En attente du résultat" (avant fin de match) */
+.vip-detail-attente {
+  display: flex; align-items: center; justify-content: center;
+  margin: 5px 14px; padding: 10px 16px;
+  background: #fef9c3; border: 1px solid #fde68a; border-radius: 10px;
+  color: #92400e; font-size: 0.82rem; font-weight: 700;
+  text-align: center; gap: 6px;
+}
+
+/* Résultat réel */
+.vip-detail-resultat {
+  display: flex; align-items: center; gap: 8px;
+  margin: 5px 14px 5px; padding: 8px 12px; border-radius: 10px;
+  width: calc(100% - 28px);
+}
+.vip-detail-resultat.correct {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 1px solid #86efac;
+}
+.vip-detail-resultat.perdu {
+  background: linear-gradient(135deg, #fff5f5, #fee2e2);
+  border: 1px solid #fca5a5;
+}
+.vip-detail-res-ico { flex-shrink: 0; }
+.vip-detail-resultat.correct .vip-detail-res-ico svg { stroke: #15803d; width: 17px; height: 17px; }
+.vip-detail-resultat.perdu   .vip-detail-res-ico svg { stroke: #dc2626; width: 17px; height: 17px; }
+.vip-detail-res-info { display: flex; flex-direction: column; gap: 1px; }
+.vip-detail-res-titre { font-size: 0.73rem; font-weight: 800; }
+.vip-detail-resultat.correct .vip-detail-res-titre { color: #15803d; }
+.vip-detail-resultat.perdu   .vip-detail-res-titre { color: #dc2626; }
+.vip-detail-res-score { font-size: 0.68rem; color: #475569; }
+
+/* Bouton retour bas */
+.vip-detail-retour-bas {
+  display: flex; align-items: center; gap: 6px; justify-content: center;
+  margin: 10px auto 0; padding: 8px 24px;
+  background: #f1f5f9; border: none; border-radius: 12px;
+  color: #475569; font-size: 0.8rem; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: all .15s;
+  width: auto;
+}
+.vip-detail-retour-bas:hover { background: #e2e8f0; color: #1e293b; }
+
+/* Bouton "Voir mon score" */
+.vip-btn-voir-score {
+  display: flex; align-items: center; gap: 7px; justify-content: center;
+  margin: 10px auto 0; padding: 9px 22px;
+  width: auto; max-width: 220px;
+  background: linear-gradient(135deg, #b45309, #d97706, #f59e0b);
+  color: #fff; border: none; border-radius: 12px;
+  font-size: 0.88rem; font-weight: 800; cursor: pointer;
+  font-family: inherit;
+  transition: all .18s;
+  box-shadow: 0 4px 16px rgba(217,119,6,.3);
+}
+.vip-btn-voir-score:hover {
+  opacity: .92; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(217,119,6,.38);
+}
+
+/* Chargement spinner (conservé pour compatibilité) */
+.vip-charg {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 64px 20px; color: #94a3b8; font-size: 0.88rem;
+}
+.vip-spinner {
+  width: 22px; height: 22px;
+  border: 2.5px solid #e2e8f0; border-top-color: #d97706;
+  border-radius: 50%; animation: vip-spin .75s cubic-bezier(.5,.1,.5,.9) infinite;
+  flex-shrink: 0; box-shadow: 0 0 10px rgba(217,119,6,.2);
+}
+@keyframes vip-spin { to { transform: rotate(360deg); } }
+
+/* ── Skeleton VIP ─────────────────────────────────────────────── */
+@keyframes vip-skel-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .45; }
+}
+.vip-skel-header {
+  height: 88px;
+  background: linear-gradient(135deg, #0d1117, #1b2430);
+  border-bottom: 2px solid rgba(245,158,11,.3);
+}
+.vip-skel-body {
+  padding: 16px 14px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.vip-skel-carte {
+  background: #fff; border-radius: 18px;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  padding: 18px 16px; display: flex; flex-direction: column;
+  gap: 14px; animation: vip-skel-pulse 1.4s ease-in-out infinite;
+}
+.vip-skel-comp {
+  height: 14px; width: 55%; border-radius: 7px;
+  background: #e2e8f0;
+}
+.vip-skel-equipes {
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+}
+.vip-skel-cercle {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #e9eef4;
+}
+.vip-skel-vs {
+  width: 30px; height: 20px; border-radius: 6px;
+  background: #e9eef4;
+}
+.vip-skel-score {
+  height: 38px; border-radius: 10px;
+  background: #fef3c7; margin: 0 auto; width: 80px;
+}
+.vip-skel-btn {
+  height: 40px; border-radius: 12px;
+  background: #fde68a;
+}
+
+/* ── Hero VIP ────────────────────────────────────────────────── */
+.vip-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 16px 14px;
+  background: linear-gradient(135deg, #0d1117, #161b22, #1b2430);
+  border-bottom: 2px solid rgba(245,158,11,.5);
+  box-shadow: 0 3px 20px rgba(0,0,0,.3);
+}
+.vip-header-ico {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, #b45309, #d97706, #f59e0b);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(245,158,11,.45);
+}
+.vip-titre { font-size: 1.08rem; font-weight: 900; color: #fff; margin: 0 0 3px; letter-spacing: -.2px; }
+.vip-sous  { font-size: 0.72rem; color: rgba(255,255,255,.7); margin: 0; }
+.vip-sous strong { color: #fbbf24; font-weight: 800; }
+
+/* Messages globaux */
+.vip-msg {
+  margin: 12px; padding: 12px 16px;
+  border-radius: 12px; font-size: 0.85rem; font-weight: 600;
+}
+.vip-msg.ok     { background: #dcfce7; color: #166534; border-left: 3px solid #16a34a; }
+.vip-msg.erreur { background: #fee2e2; color: #991b1b; border-left: 3px solid #ef4444; }
+
+/* Liste matchs */
+.vip-liste { padding: 10px 12px; display: flex; flex-direction: column; gap: 12px; }
+
+/* Vide */
+.vip-vide {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 72px 20px; color: #94a3b8; gap: 12px; text-align: center;
+}
+.vip-vide p { font-size: 0.95rem; font-weight: 700; color: #64748b; margin: 0; }
+.vip-vide small { font-size: 0.75rem; color: #94a3b8; }
+
+/* ── Carte match VIP ─────────────────────────────────────────── */
+.vip-carte {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.04);
+  border: 1.5px solid #fde68a;
+  transition: box-shadow .18s, transform .18s;
+}
+.vip-carte:hover { box-shadow: 0 6px 24px rgba(217,119,6,.15); transform: translateY(-1px); }
+.vip-carte.payee { border-color: #86efac; }
+.vip-carte.payee:hover { box-shadow: 0 6px 24px rgba(22,163,74,.15); }
+
+/* En-tête carte */
+.vip-carte-top {
+  display: flex; align-items: center; gap: 7px;
+  padding: 8px 13px;
+  background: linear-gradient(135deg, #fffbeb, #fef9c3);
+  border-bottom: 1px solid #fde68a;
+}
+.vip-compet { flex: 1; font-size: 0.68rem; color: #92400e; font-weight: 700; }
+.vip-heure  { font-size: 0.68rem; color: #94a3b8; }
+.vip-badge-cert {
+  font-size: 0.64rem; background: #dcfce7;
+  color: #166534; padding: 2px 7px; border-radius: 8px; font-weight: 800;
+}
+
+/* Équipes */
+.vip-equipes {
+  display: flex; align-items: center;
+  padding: 11px 12px 9px; gap: 6px;
+  background: #fafafa;
+}
+.vip-equipe-bloc {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 5px; text-align: center;
+}
+.vip-logo-wrap {
+  display: flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,.1);
+  border: 1.5px solid #f1f5f9;
+}
+.vip-eq-logo { width: 28px; height: 28px; object-fit: contain; }
+.vip-eq-nom {
+  font-size: 0.7rem; font-weight: 800; color: #1e293b;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;
+}
+.vip-vs { font-size: 0.68rem; font-weight: 800; color: #94a3b8; flex-shrink: 0; }
+
+/* Score débloqué */
+.vip-score-zone {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 18px 16px;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-top: 1px solid #bbf7d0; gap: 7px;
+}
+.vip-score-header {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.72rem; color: #16a34a; font-weight: 700;
+}
+.vip-score {
+  font-size: 3rem; font-weight: 900; color: #15803d; line-height: 1;
+  text-shadow: 0 2px 8px rgba(22,163,74,.2);
+  letter-spacing: -1px;
+}
+.vip-score-reel { font-size: 0.8rem; color: #64748b; font-weight: 500; }
+.vip-score-reel.correct { color: #16a34a; font-weight: 800; }
+
+/* Zone verrouillée */
+.vip-locked-zone {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 12px 12px; gap: 9px;
+  border-top: 1px solid #fef3c7;
+}
+.vip-score-masque {
+  display: flex; align-items: center; gap: 8px;
+  background: #f8fafc; border-radius: 10px;
+  padding: 8px 20px; border: 1.5px dashed #e2e8f0;
+}
+.vip-score-cache {
+  font-size: 1.6rem; font-weight: 900;
+  color: #cbd5e1; letter-spacing: 6px;
+}
+.vip-actions { display: flex; flex-direction: column; align-items: center; gap: 7px; width: 100%; }
+.vip-prix    { font-size: 0.9rem; font-weight: 800; color: #d97706; }
+.vip-btn-payer {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  width: auto; max-width: 210px; padding: 9px 20px;
+  background: linear-gradient(135deg, #b45309, #d97706, #f59e0b);
+  color: #fff; border: none; border-radius: 11px;
+  font-size: 0.8rem; font-weight: 800; cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 14px rgba(217,119,6,.3);
+  transition: all .18s;
+}
+.vip-btn-payer:hover {
+  opacity: .92; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(217,119,6,.38);
+}
+.vip-btn-verif {
+  background: none; border: none; color: #94a3b8;
+  font-size: 0.7rem; cursor: pointer; font-family: inherit;
+  text-decoration: underline; transition: color .15s;
+}
+.vip-btn-verif:hover { color: #64748b; }
+
+/* ── Overlay modal ───────────────────────────────────────────── */
+.vip-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+}
+
+/* Modal */
+.vip-modal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 22px 22px 26px;
+  width: 100%; max-width: 420px;
+  box-shadow: 0 16px 64px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.15);
+  animation: vip-modal-in .25s cubic-bezier(.34,1.3,.64,1);
+  border: 1px solid rgba(255,255,255,.5);
+}
+@keyframes vip-modal-in {
+  from { transform: scale(0.92) translateY(12px); opacity: 0; }
+  to   { transform: scale(1) translateY(0);        opacity: 1; }
+}
+
+.vip-modal-header {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 18px;
+}
+.vip-modal-titre {
+  font-size: 1.02rem; font-weight: 800; color: #1e293b; margin: 0; letter-spacing: -.2px;
+}
+.vip-modal-close {
+  background: #f1f5f9; border: none; font-size: 1rem;
+  color: #94a3b8; cursor: pointer; padding: 6px;
+  border-radius: 8px; transition: all .15s;
+  width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+}
+.vip-modal-close:hover { background: #fee2e2; color: #ef4444; }
+
+/* Méthodes paiement */
+.vip-methodes { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
+.vip-methode-btn {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 15px;
+  border: 2px solid #e2e8f0; border-radius: 14px;
+  background: #fafcff; cursor: pointer; text-align: left;
+  font-family: inherit; transition: all .15s;
+}
+.vip-methode-btn:hover { border-color: #d97706; background: #fffbeb; }
+.vip-methode-btn.actif {
+  border-color: #f59e0b; background: #fffbeb;
+  box-shadow: 0 0 0 3px rgba(245,158,11,.15);
+}
+.met-emoji { font-size: 1.5rem; }
+.met-infos { display: flex; flex-direction: column; gap: 2px; }
+.met-label {
+  font-size: 0.88rem; font-weight: 700; color: #1e293b;
+  display: flex; align-items: center; gap: 7px;
+}
+.met-badge {
+  background: #dbeafe; color: #1d4ed8;
+  font-size: 0.62rem; font-weight: 800;
+  padding: 1px 7px; border-radius: 5px; letter-spacing: .2px;
+}
+.met-desc { font-size: 0.72rem; color: #64748b; }
+
+/* Formulaire paiement */
+.vip-form-pai { display: flex; flex-direction: column; gap: 13px; }
+.vip-field    { display: flex; flex-direction: column; gap: 5px; }
+.vip-label    { font-size: 0.82rem; font-weight: 700; color: #374151; }
+.vip-input {
+  padding: 12px 15px; border: 1.5px solid #e2e8f0;
+  border-radius: 12px; font-size: 1rem; font-family: inherit;
+  transition: border-color .15s, box-shadow .15s;
+}
+.vip-input:focus { outline: none; border-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245,158,11,.12); }
+.vip-montant {
+  background: linear-gradient(135deg, #fffbeb, #fef9c3);
+  padding: 11px 15px;
+  border-radius: 10px; font-size: 0.9rem; color: #92400e;
+  text-align: center; font-weight: 700; border: 1px solid #fde68a;
+}
+.vip-msg-mini {
+  font-size: 0.82rem; color: #dc2626;
+  background: linear-gradient(135deg, #fff0f0, #fee2e2);
+  padding: 9px 13px; border-radius: 10px; font-weight: 500;
+}
+.vip-modal-actions { display: flex; gap: 10px; }
+.vip-btn-annuler {
+  flex: 1; padding: 12px;
+  background: #f1f5f9; border: none; border-radius: 12px;
+  font-weight: 700; font-size: 0.88rem; color: #64748b;
+  cursor: pointer; font-family: inherit; transition: background .15s;
+}
+.vip-btn-annuler:hover { background: #e2e8f0; }
+.vip-btn-payer-modal {
+  flex: 2; padding: 12px;
+  background: linear-gradient(135deg, #b45309, #d97706, #f59e0b);
+  color: #fff; border: none; border-radius: 12px;
+  font-weight: 800; font-size: 0.9rem;
+  cursor: pointer; font-family: inherit;
+  transition: all .18s;
+  box-shadow: 0 4px 14px rgba(217,119,6,.25);
+}
+.vip-btn-payer-modal:hover {
+  opacity: .92; transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(217,119,6,.35);
+}
+.vip-btn-payer-modal:disabled { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* ── Header compact ──────────────────────────────────────────── */
+.vip-header-compact {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px 9px;
+  background: linear-gradient(135deg, #0d1117, #1b2430);
+  border-bottom: 2px solid rgba(245,158,11,.5);
+}
+.vip-header-gauche {
+  display: flex; align-items: center; gap: 10px; color: #f59e0b;
+}
+.vip-header-gauche svg { width: 18px; height: 18px; flex-shrink: 0; }
+.vip-titre-compact { display: block; font-size: 0.9rem; font-weight: 900; color: #fff; line-height: 1.2; }
+.vip-sous-compact  { display: block; font-size: 0.68rem; color: rgba(255,255,255,.5); }
+
+.vip-btn-refresh {
+  flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .15s;
+}
+.vip-btn-refresh:hover { background: rgba(255,255,255,.16); transform: rotate(30deg); }
+
+/* ── Carte compacte (nouvelle) ──────────────────────────────── */
+.vip-carte-c {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid #fde68a;
+  transition: box-shadow .15s;
+}
+.vip-carte-c:hover { box-shadow: 0 3px 12px rgba(217,119,6,.12); }
+.vip-carte-c.payee { border-color: #86efac; }
+
+/* En-tête ligne 1 */
+.vip-c-top {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 10px;
+  background: linear-gradient(90deg, #fffbeb, #fef9c3);
+  border-bottom: 1px solid #fde68a;
+}
+.vip-c-comp  { flex: 1; font-size: 0.65rem; font-weight: 700; color: #92400e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vip-c-heure { font-size: 0.65rem; color: #94a3b8; flex-shrink: 0; }
+.vip-c-timer { display: flex; align-items: center; gap: 3px; font-size: 0.62rem; color: #d97706; font-weight: 700; flex-shrink: 0; }
+.vip-c-badge {
+  font-size: 0.6rem; font-weight: 800; padding: 2px 6px;
+  border-radius: 6px; flex-shrink: 0; white-space: nowrap;
+}
+.vip-c-badge.paye { background: #dcfce7; color: #15803d; }
+.vip-c-badge.lock { background: #fef3c7; color: #b45309; }
+
+/* Ligne match horizontale */
+.vip-c-row {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 10px;
+}
+.vip-c-equipe {
+  flex: 1; display: flex; align-items: center; gap: 6px; min-width: 0;
+}
+.vip-c-equipe.ext { flex-direction: row-reverse; }
+.vip-c-nom {
+  font-size: 0.78rem; font-weight: 700; color: #1e293b;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Centre : score ou bouton */
+.vip-c-centre {
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; min-width: 70px;
+}
+.vip-c-score {
+  font-size: 1.3rem; font-weight: 900; color: #15803d;
+  background: #f0fdf4; border-radius: 8px;
+  padding: 4px 12px; cursor: pointer;
+  border: 2px solid #86efac;
+  letter-spacing: 1px;
+  transition: transform .15s;
+}
+.vip-c-score:hover { transform: scale(1.06); }
+
+/* Zone score + indicateur d'attente (match non encore terminé) */
+.vip-c-score-zone {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 3px;
+}
+.vip-c-attente {
+  font-size: 0.58rem; font-weight: 700;
+  color: #92400e; background: #fef9c3;
+  border: 1px solid #fde68a; border-radius: 5px;
+  padding: 1px 6px; white-space: nowrap;
+}
+
+.vip-c-btn-lock {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  background: linear-gradient(135deg, #b45309, #d97706);
+  color: #fff; border: none; border-radius: 8px;
+  padding: 5px 10px; cursor: pointer; font-family: inherit;
+  font-size: 0.62rem; font-weight: 800;
+  box-shadow: 0 2px 8px rgba(217,119,6,.3);
+  transition: all .15s; white-space: nowrap;
+}
+.vip-c-btn-lock:hover { opacity: .9; transform: translateY(-1px); }
+.vip-c-btn-lock svg { width: 13px; height: 13px; }
+
+/* Résultat réel */
+.vip-c-resultat {
+  font-size: 0.68rem; font-weight: 800;
+  padding: 4px 10px 5px;
+  border-top: 1px solid #f0f4f8; text-align: center;
+}
+.vip-c-resultat.correct { color: #15803d; background: #f0fdf4; }
+.vip-c-resultat.perdu   { color: #dc2626; background: #fff5f5; }
+
+/* Ancienne .vip-hero gardée pour compatibilité */
+.vip-hero {
+  display: flex; align-items: center; gap: 13px;
+  padding: 18px 16px 16px;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1b2430 100%);
+  border-bottom: 3px solid rgba(245,158,11,.6);
+  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+}
+.vip-hero-ico {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: linear-gradient(135deg, #b45309, #f59e0b, #fbbf24);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center; color: #fff;
+  box-shadow: 0 6px 20px rgba(245,158,11,.5);
+}
+.vip-hero-texte { flex: 1; }
+
+/* ── Sections par date (nouveau mode liste par match) ───────── */
+.vip-date-section {
+  margin: 10px 12px 0;
+}
+.vip-date-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 4px 6px;
+}
+.vip-date-label {
+  font-size: 0.78rem; font-weight: 800; color: #1e293b;
+  text-transform: capitalize;
+}
+.vip-date-nb {
+  font-size: 0.67rem; background: #f1f5f9; color: #64748b;
+  padding: 2px 8px; border-radius: 8px; font-weight: 700;
+}
+.vip-matchs-liste {
+  display: flex; flex-direction: column; gap: 6px;
+}
+/* Badge nb débloqués dans le hero */
+.vip-debloques-badge {
+  color: #15803d; font-weight: 800;
+}
+/* Nom du championnat sur la carte (mode liste) */
+.vip-comp-nom {
+  flex: 1; font-size: 0.7rem; font-weight: 700; color: #64748b;
+  text-overflow: ellipsis; overflow: hidden; white-space: nowrap;
+}
+/* Résultat inline sur la carte */
+.vip-resultat-inline {
+  text-align: center; font-size: 0.72rem; font-weight: 800;
+  padding: 5px 12px 8px; border-top: 1px solid #f0f4f8; margin-top: 4px;
+}
+.vip-resultat-inline.correct { color: #15803d; }
+.vip-resultat-inline.perdu   { color: #dc2626; }
+
+/* Sections par championnat (ancienne logique — gardée pour compatibilité) */
+.vip-champ-section {
+  margin: 10px 12px; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 3px 14px rgba(0,0,0,.08);
+  border: 1px solid rgba(226,232,240,.6);
+}
+.vip-champ-header {
+  display: flex; align-items: center; gap: 9px; width: 100%;
+  padding: 13px 15px;
+  background: linear-gradient(135deg, #14532d, #15803d, #16a34a);
+  border: none; cursor: pointer; font-family: inherit; text-align: left;
+  transition: opacity .15s;
+}
+.vip-champ-header:hover { opacity: .93; }
+.vip-champ-nom    { flex: 1; font-size: 0.84rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: .5px; }
+.vip-champ-nb     { font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,.2); color: #fff; padding: 2px 9px; border-radius: 10px; }
+.vip-champ-paye   { font-size: 0.68rem; background: #dcfce7; color: #15803d; padding: 2px 9px; border-radius: 10px; font-weight: 800; }
+.vip-champ-chevron { color: rgba(255,255,255,.8); flex-shrink: 0; }
+
+.vip-champ-body { display: flex; flex-direction: column; gap: 0; background: #fff; }
+.vip-champ-body .vip-carte { border-radius: 0; border: none; border-bottom: 1px solid #f5f5f5; box-shadow: none; }
+.vip-champ-body .vip-carte:last-child { border-bottom: none; border-radius: 0 0 16px 16px; }
+
+/* Compte à rebours */
+.vip-carte-timer {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 13px;
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  font-size: 0.65rem; font-weight: 800; color: #92400e;
+  border-bottom: 1px solid #fde68a;
+}
+
+/* Badges */
+.vip-date-badge { font-size: 0.65rem; color: #94a3b8; }
+.vip-prix-badge {
+  font-size: 0.65rem; background: linear-gradient(135deg, #fef9c3, #fde68a);
+  color: #b45309; padding: 2px 8px; border-radius: 8px;
+  font-weight: 800; flex-shrink: 0;
+}
+.vip-badge-paye {
+  font-size: 0.65rem; background: #dcfce7; color: #15803d;
+  padding: 2px 8px; border-radius: 8px; font-weight: 800; flex-shrink: 0;
+}
+
+/* VS bloc */
+.vip-vs-bloc  { display: flex; align-items: center; justify-content: center; flex-shrink: 0; min-width: 38px; }
+.vip-vs-txt   { font-size: 0.68rem; font-weight: 900; color: #94a3b8; }
+.vip-score-mini {
+  font-size: 1.15rem; font-weight: 900; color: #15803d;
+  letter-spacing: 1px; background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  padding: 4px 10px; border-radius: 10px; border: 1.5px solid #86efac;
+}
+
+/* Timer vue détail */
+.vip-detail-timer {
+  display: flex; align-items: center; gap: 5px;
+  margin-top: 7px; padding: 5px 14px; border-radius: 9px;
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  color: #92400e; font-size: 0.75rem; font-weight: 800;
+  border: 1px solid #fde68a;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGE DE PAIEMENT — plein écran fixe, couvre tout
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Overlay plein écran — couvre navbar, header et tout le reste */
+.vip-pay-overlay {
+  position: fixed; inset: 0; z-index: 400;
+  background: #f0f4f8;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  animation: vip-pay-in .22s ease both;
+}
+@keyframes vip-pay-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.vip-pay-page {
+  width: 100%; max-width: 460px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.vip-pay-page::-webkit-scrollbar { display: none; }
+
+/* Carte info match */
+.vip-pay-match-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  border: 1px solid rgba(226,232,240,.8);
+}
+.vip-pay-match-badge {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 9px 14px;
+  background: linear-gradient(135deg, #b45309, #d97706, #f59e0b);
+  color: #fff; font-size: 0.74rem; font-weight: 800;
+  letter-spacing: .3px;
+}
+.vip-pay-match-corps {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; padding: 18px 16px 14px;
+}
+.vip-pay-equipe {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 7px; flex: 1; text-align: center;
+  font-size: 0.8rem; font-weight: 700; color: #1e293b;
+  word-break: break-word;
+}
+.vip-pay-centre {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px; flex-shrink: 0;
+}
+.vip-pay-vs-badge {
+  font-size: 0.72rem; font-weight: 900; color: #94a3b8;
+  background: #f1f5f9; padding: 5px 10px;
+  border-radius: 8px; border: 1px solid #e2e8f0;
+}
+.vip-pay-compet-txt {
+  font-size: 0.65rem; font-weight: 700;
+  color: #64748b; text-transform: uppercase; letter-spacing: .5px;
+  text-align: center;
+}
+.vip-pay-date-txt {
+  font-size: 0.63rem; color: #94a3b8;
+  text-align: center;
+}
+.vip-pay-montant-badge {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 11px 16px;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-top: 1px solid #bbf7d0;
+  font-size: 0.88rem; color: #14532d;
+  font-weight: 600;
+}
+.vip-pay-montant-badge strong { font-weight: 900; font-size: 1rem; }
+
+/* Formulaire de paiement */
+.vip-pay-form {
+  display: flex; flex-direction: column; gap: 14px;
+  background: #fff; border-radius: 20px; padding: 20px 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+  border: 1px solid rgba(226,232,240,.8);
+}
+
+.vip-pay-champ {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.vip-pay-label {
+  font-size: 0.8rem; font-weight: 800;
+  color: #374151; letter-spacing: .1px;
+}
+
+/* Sélecteur déroulant */
+.vip-pay-select-wrap {
+  position: relative;
+  display: flex; align-items: center;
+}
+.vip-pay-select {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  border: 1.5px solid #e2e8f0; border-radius: 13px;
+  font-size: 0.88rem; font-family: inherit;
+  color: #1e293b; background: #f8fafc;
+  appearance: none; -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s;
+}
+.vip-pay-select:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245,158,11,.12);
+  background: #fff;
+}
+.vip-pay-select-icone {
+  position: absolute; right: 14px;
+  font-size: 1rem; color: #94a3b8;
+  pointer-events: none;
+}
+
+/* Champ téléphone */
+.vip-pay-input-wrap {
+  position: relative; display: flex; align-items: center;
+}
+.vip-pay-input-icone {
+  position: absolute; left: 13px;
+  color: #94a3b8; pointer-events: none;
+  display: flex; align-items: center;
+}
+.vip-pay-input {
+  width: 100%;
+  padding: 12px 14px 12px 40px;
+  border: 1.5px solid #e2e8f0; border-radius: 13px;
+  font-size: 0.95rem; font-family: inherit;
+  color: #1e293b; background: #f8fafc;
+  transition: border-color .15s, box-shadow .15s;
+  letter-spacing: .5px;
+}
+.vip-pay-input:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245,158,11,.12);
+  background: #fff;
+}
+.vip-pay-input::placeholder { color: #c4cdd6; }
+.vip-pay-hint {
+  font-size: 0.72rem; color: #94a3b8; font-weight: 500;
+}
+
+/* Message erreur paiement */
+.vip-pay-erreur {
+  padding: 11px 14px;
+  background: linear-gradient(135deg, #fff0f0, #fff5f5);
+  border: 1px solid #fca5a5; border-radius: 12px;
+  color: #c62828; font-size: 0.82rem; font-weight: 500;
+  border-left: 3px solid #ef4444;
+}
+
+/* Boutons actions paiement */
+.vip-pay-actions {
+  display: flex; gap: 20px; margin-top: 8px;
+  justify-content: center;
+}
+.vip-pay-btn-annuler {
+  padding: 0.6rem 1.4rem;
+  background: #f1f5f9; border: 1.5px solid #e2e8f0; border-radius: 10px;
+  font-weight: 700; font-size: 0.82rem; color: #64748b;
+  cursor: pointer; font-family: inherit;
+  transition: all .15s;
+}
+.vip-pay-btn-annuler:hover { background: #e2e8f0; color: #334155; border-color: #cbd5e1; }
+
+.vip-pay-btn-payer {
+  padding: 0.6rem 1.6rem;
+  background: linear-gradient(135deg, #b45309, #d97706, #f59e0b);
+  color: #fff; border: none; border-radius: 10px;
+  font-weight: 700; font-size: 0.85rem;
+  cursor: pointer; font-family: inherit;
+  transition: all .18s;
+  box-shadow: 0 3px 12px rgba(217,119,6,.25);
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+}
+.vip-pay-btn-payer:hover {
+  opacity: .92; transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(217,119,6,.35);
+}
+.vip-pay-btn-payer:disabled { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Spinner dans le bouton */
+.vip-pay-spinner {
+  width: 15px; height: 15px;
+  border: 2.5px solid rgba(255,255,255,.35);
+  border-top-color: #fff; border-radius: 50%;
+  animation: vip-spin .7s linear infinite; flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGES RÉSULTAT (succès / échec)
+   ═══════════════════════════════════════════════════════════════ */
+.vip-resultat-page {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 65vh;
+  padding: 32px 24px 100px;
+  text-align: center;
+  gap: 14px;
+  animation: vip-pay-in .35s cubic-bezier(.34,1.2,.64,1) both;
+}
+
+/* Icône résultat */
+.vip-res-ico-wrap {
+  width: 80px; height: 80px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 4px;
+}
+.vip-res-ico-wrap.succes {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: #15803d;
+  box-shadow: 0 8px 30px rgba(22,163,74,.25);
+  border: 2px solid #86efac;
+}
+.vip-res-ico-wrap.echec {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  color: #dc2626;
+  box-shadow: 0 8px 30px rgba(239,68,68,.2);
+  border: 2px solid #fca5a5;
+}
+
+.vip-res-titre {
+  font-size: 1.4rem; font-weight: 900;
+  color: #0f172a; letter-spacing: -.4px; margin: 0;
+}
+.vip-res-titre.echec { color: #dc2626; }
+
+.vip-res-sous {
+  font-size: 0.9rem; color: #64748b; line-height: 1.6;
+  max-width: 300px; margin: 0;
+}
+
+/* Info match dans succès */
+.vip-res-match-info {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-radius: 14px; border: 1px solid #bbf7d0;
+  font-size: 0.84rem; font-weight: 700; color: #15803d;
+}
+.vip-res-vs {
+  font-size: 0.72rem; font-weight: 900; color: #94a3b8;
+  background: #fff; padding: 3px 8px; border-radius: 6px;
+}
+
+/* Boutons résultat — compacts centrés */
+.vip-res-actions {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+}
+.vip-res-btn-primaire {
+  padding: .65rem 2rem;
+  background: linear-gradient(135deg, #15803d, #16a34a);
+  color: #fff; border: none; border-radius: 11px;
+  font-size: 0.86rem; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  transition: all .18s;
+  box-shadow: 0 4px 14px rgba(22,163,74,.28);
+}
+.vip-res-btn-primaire:hover {
+  opacity: .92; transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(22,163,74,.36);
+}
+.vip-res-btn-secondaire {
+  padding: .65rem 2rem;
+  background: linear-gradient(135deg, #b45309, #d97706);
+  color: #fff; border: none; border-radius: 11px;
+  font-size: 0.84rem; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  transition: all .18s;
+  box-shadow: 0 3px 12px rgba(217,119,6,.22);
+}
+.vip-res-btn-secondaire:hover { opacity: .92; transform: translateY(-1px); }
+.vip-res-btn-outline {
+  background: none; border: 1.5px solid #e2e8f0;
+  color: #64748b; padding: 11px;
+  border-radius: 12px; font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+  transition: all .15s; width: 100%; max-width: 300px;
+}
+.vip-res-btn-outline:hover { border-color: #94a3b8; color: #334155; }
