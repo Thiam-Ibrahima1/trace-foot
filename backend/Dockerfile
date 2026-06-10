@@ -1,7 +1,7 @@
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
-    curl zip unzip git libzip-dev \
+    curl zip unzip git libzip-dev ca-certificates \
     && docker-php-ext-install pdo pdo_mysql zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -12,6 +12,11 @@ COPY . .
 RUN rm -f bootstrap/cache/*.php
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 RUN php artisan package:discover --ansi
+
+RUN mkdir -p storage/framework/cache/data
+RUN mkdir -p storage/framework/sessions
+RUN mkdir -p storage/framework/views
+RUN chmod -R 775 storage
 
 EXPOSE 8000
 
