@@ -14,11 +14,10 @@ return [
             'prefix'    => '',
             'strict'    => true,
             'engine'    => null,
-            'options'   => [
-                PDO::ATTR_PERSISTENT => false,
-                PDO::MYSQL_ATTR_SSL_CA => base_path('storage/certs/ca.pem'),
-                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
-            ],
+            'options' => [
+    		PDO::ATTR_PERSISTENT => false,
+    		PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+             ],	
         ],
     ],
     'migrations' => [
