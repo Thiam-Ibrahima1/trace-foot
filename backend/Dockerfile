@@ -20,4 +20,4 @@ RUN chmod -R 775 storage
 
 EXPOSE 8000
 
-CMD php artisan config:clear && php artisan cache:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
+CMD php -r "try { new PDO('mysql:host='.getenv('DB_HOST').';port='.getenv('DB_PORT').';dbname='.getenv('DB_DATABASE'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'), [PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false]); echo 'DB OK'; } catch(Exception \$e) { echo \$e->getMessage(); }" && php artisan config:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
