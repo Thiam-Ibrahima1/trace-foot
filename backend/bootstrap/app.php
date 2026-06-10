@@ -14,19 +14,16 @@ return Application::configure(basePath: dirname(__DIR__))
     )
 
     ->withMiddleware(function (Middleware $middleware) {
-
-        // Enregistre le middleware qui protège les routes admin
-        $middleware->alias([
-            'admin.seulement' => \App\Http\Middleware\AdminSeulement::class,
-        ]);
-
-        // Supprime le middleware de session Sanctum
-        // On utilise Bearer tokens, pas les cookies de session
-        
-        $middleware->api(remove: [
-            \Laravel\Sanctum\Http\Middleware\AuthenticateSession::class,
-        ]);
-    })
+    // CORS — doit être en premier
+    $middleware->prepend(\Illuminate\Http\Middleware\HandleCors::class);
+    
+    $middleware->alias([
+        'admin.seulement' => \App\Http\Middleware\AdminSeulement::class,
+    ]);
+    $middleware->api(remove: [
+        \Laravel\Sanctum\Http\Middleware\AuthenticateSession::class,
+    ]);
+})
 
     ->withSchedule(function (\Illuminate\Console\Scheduling\Schedule $schedule) {
         // 03:55 Dakar — Génère les tracés + VIP pour tous les matchs du jour
