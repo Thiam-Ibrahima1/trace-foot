@@ -1,9 +1,7 @@
 <?php
-// config/database.php — Configuration MySQL pour Trace FC
 return [
     'default' => env('DB_CONNECTION', 'mysql'),
     'connections' => [
-        // Connexion MySQL principale
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', '127.0.0.1'),
@@ -16,11 +14,11 @@ return [
             'prefix'    => '',
             'strict'    => true,
             'engine'    => null,
-            // Optimisation : connexion persistante pour réduire la latence
-            'options'   => extension_loaded('pdo_mysql') ? array_filter([
+            'options'   => [
                 PDO::ATTR_PERSISTENT => false,
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+                PDO::MYSQL_ATTR_SSL_CA => '/etc/ssl/certs/ca-certificates.crt',
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+            ],
         ],
     ],
     'migrations' => [
